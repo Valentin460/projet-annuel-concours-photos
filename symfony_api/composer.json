@@ -7,16 +7,22 @@
         "php": ">=8.0.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.8",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.14",
         "symfony/console": "6.0.*",
         "symfony/dotenv": "6.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.0.*",
         "symfony/runtime": "6.0.*",
+        "symfony/security-bundle": "6.0.*",
         "symfony/yaml": "6.0.*"
     },
     "require-dev": {
+        "symfony/maker-bundle": "^1.48"
     },
     "config": {
+        "platform-check": false,
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
