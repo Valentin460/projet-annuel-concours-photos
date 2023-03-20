@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MembrePhotoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MembrePhotoRepository::class)]
-#[ApiResource]
+#[ApiResource()]
 class MembrePhoto
 {
     #[ORM\Id]

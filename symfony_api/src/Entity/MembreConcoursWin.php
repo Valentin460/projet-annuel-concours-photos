@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MembreConcoursWinRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MembreConcoursWinRepository::class)]
-#[ApiResource]
+#[ApiResource()]
 class MembreConcoursWin
 {
     #[ORM\Id]
