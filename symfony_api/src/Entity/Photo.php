@@ -45,7 +45,7 @@ class Photo
 
     #[ORM\ManyToOne(inversedBy: 'photos')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?membre $member = null;
+    private ?Membre $member = null;
 
     #[ORM\OneToMany(mappedBy: 'membre', targetEntity: MembrePhoto::class)]
     private Collection $membrePhoto;
@@ -157,12 +157,12 @@ class Photo
         return $this;
     }
 
-    public function getMember(): ?membre
+    public function getMember(): ?Membre
     {
         return $this->member;
     }
 
-    public function setMember(?membre $member): self
+    public function setMember(?Membre $member): self
     {
         $this->member = $member;
 

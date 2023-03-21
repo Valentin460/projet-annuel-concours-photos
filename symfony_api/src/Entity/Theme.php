@@ -20,7 +20,7 @@ class Theme
     #[ORM\Column(length: 255)]
     private ?string $theme = null;
 
-    #[ORM\ManyToMany(targetEntity: concours::class, inversedBy: 'themes')]
+    #[ORM\ManyToMany(targetEntity: Concours::class, inversedBy: 'themes')]
     private Collection $concours;
 
     public function __construct()
@@ -53,7 +53,7 @@ class Theme
         return $this->concours;
     }
 
-    public function addConcour(concours $concour): self
+    public function addConcour(Concours $concour): self
     {
         if (!$this->concours->contains($concour)) {
             $this->concours->add($concour);
@@ -62,7 +62,7 @@ class Theme
         return $this;
     }
 
-    public function removeConcour(concours $concour): self
+    public function removeConcour(Concours $concour): self
     {
         $this->concours->removeElement($concour);
 

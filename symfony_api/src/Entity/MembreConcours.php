@@ -24,11 +24,11 @@ class MembreConcours
 
     #[ORM\ManyToOne(inversedBy: 'membreConcours')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?concours $Concours = null;
+    private ?Concours $Concours = null;
 
     #[ORM\ManyToOne(inversedBy: 'membreConcours')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?membre $membre = null;
+    private ?Membre $membre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fonction = null;
@@ -62,24 +62,24 @@ class MembreConcours
         return $this;
     }
 
-    public function getConcours(): ?concours
+    public function getConcours(): ?Concours
     {
         return $this->Concours;
     }
 
-    public function setConcours(?concours $Concours): self
+    public function setConcours(?Concours $Concours): self
     {
         $this->Concours = $Concours;
 
         return $this;
     }
 
-    public function getMembre(): ?membre
+    public function getMembre(): ?Membre
     {
         return $this->membre;
     }
 
-    public function setMembre(?membre $membre): self
+    public function setMembre(?Membre $membre): self
     {
         $this->membre = $membre;
 

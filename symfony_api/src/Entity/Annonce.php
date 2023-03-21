@@ -36,7 +36,7 @@ class Annonce
 
     #[ORM\ManyToOne(inversedBy: 'annonce')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?organisation $organisation = null;
+    private ?Organisation $organisation = null;
 
     #[ORM\ManyToOne(inversedBy: 'annonce')]
     #[ORM\JoinColumn(nullable: false)]
@@ -119,12 +119,12 @@ class Annonce
         return $this;
     }
 
-    public function getOrganisation(): ?organisation
+    public function getOrganisation(): ?Organisation
     {
         return $this->organisation;
     }
 
-    public function setOrganisation(?organisation $organisation): self
+    public function setOrganisation(?Organisation $organisation): self
     {
         $this->organisation = $organisation;
 

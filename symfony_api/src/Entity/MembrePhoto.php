@@ -21,11 +21,11 @@ class MembrePhoto
 
     #[ORM\ManyToOne(inversedBy: 'membrePhoto')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?membre $photo = null;
+    private ?Membre $photo = null;
 
     #[ORM\ManyToOne(inversedBy: 'membrePhoto')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?photo $membre = null;
+    private ?Photo $membre = null;
 
     public function getId(): ?int
     {
@@ -44,24 +44,24 @@ class MembrePhoto
         return $this;
     }
 
-    public function getPhoto(): ?membre
+    public function getPhoto(): ?Membre
     {
         return $this->photo;
     }
 
-    public function setPhoto(?membre $photo): self
+    public function setPhoto(?Membre $photo): self
     {
         $this->photo = $photo;
 
         return $this;
     }
 
-    public function getMembre(): ?photo
+    public function getMembre(): ?Photo
     {
         return $this->membre;
     }
 
-    public function setMembre(?photo $membre): self
+    public function setMembre(Photo $membre): self
     {
         $this->membre = $membre;
 

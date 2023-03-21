@@ -20,7 +20,7 @@ class CategoryParticipant
     #[ORM\Column(length: 255)]
     private ?string $category_participant = null;
 
-    #[ORM\ManyToMany(targetEntity: concours::class, inversedBy: 'category_participant')]
+    #[ORM\ManyToMany(targetEntity: Concours::class, inversedBy: 'category_participant')]
     private Collection $concours;
 
     public function __construct()
@@ -53,7 +53,7 @@ class CategoryParticipant
         return $this->concours;
     }
 
-    public function addConcour(concours $concour): self
+    public function addConcour(Concours $concour): self
     {
         if (!$this->concours->contains($concour)) {
             $this->concours->add($concour);
@@ -62,7 +62,7 @@ class CategoryParticipant
         return $this;
     }
 
-    public function removeConcour(concours $concour): self
+    public function removeConcour(Concours $concour): self
     {
         $this->concours->removeElement($concour);
 

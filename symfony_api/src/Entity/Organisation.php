@@ -56,7 +56,7 @@ class Organisation
     #[ORM\OneToMany(mappedBy: 'organisation_publish', targetEntity: Concours::class)]
     private Collection $concours_publish;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'organisation')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'organisation')]
     private Collection $user;
 
     #[ORM\OneToMany(mappedBy: 'organisation', targetEntity: Annonce::class)]
@@ -261,7 +261,7 @@ class Organisation
         return $this->user;
     }
 
-    public function addUser(user $user): self
+    public function addUser(User $user): self
     {
         if (!$this->user->contains($user)) {
             $this->user->add($user);
@@ -270,7 +270,7 @@ class Organisation
         return $this;
     }
 
-    public function removeUser(user $user): self
+    public function removeUser(User $user): self
     {
         $this->user->removeElement($user);
 
