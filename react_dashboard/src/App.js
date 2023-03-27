@@ -1,24 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import {Route, Routes} from 'react-router-dom'
+import LoginForm from './Components/LoginForm';
+import bootstrap from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import axios from 'axios'
+
+export const setAuthToken = token => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+  else
+    delete axios.defaults.headers.common["Authorization"];
+}
 
 function App() {
+
+  const token = localStorage.getItem("jwt");
+  if (token) {
+    setAuthToken(token);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/login' element={<LoginForm/>}></Route>
+    </Routes>
   );
 }
 
