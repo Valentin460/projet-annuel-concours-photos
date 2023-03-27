@@ -5,6 +5,7 @@ function LoginForm() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
     const setAuthToken = token => {
         if (token) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
