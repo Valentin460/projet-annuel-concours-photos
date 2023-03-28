@@ -10,6 +10,10 @@ import OrganisationForm from "./Components/OrganisationForm";
 import ConcoursForm from "./Components/ConcoursForm";
 import MembreForm from "./Components/MembreForm";
 import Home from './Components/Home';
+import UserList from './Components/UserList';
+import OrganisationList from './Components/OrganisationListe';
+import ConcourList from './Components/ConcourList';
+import MembreList from './Components/MembreListe';
 
 export const setAuthToken = token => {
   if (token) {
@@ -30,9 +34,13 @@ function App() {
     <Routes>
       <Route path='/' element={<LoginForm/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
+      <Route path='/userList' element={<UserList/>}></Route>
       <Route path='/userForm' element={<UserForm/>}></Route>
+      <Route path='/organisationList' element={<OrganisationList/>}></Route>
       <Route path='/organisationForm' element={<OrganisationForm/>}></Route>
+      <Route path='/concourList' element={<ConcourList/>}></Route>
       <Route path='/concoursForm' element={<ConcoursForm/>}></Route>
+      <Route path='/membreList' element={<MembreList/>}></Route>
       <Route path='/membreForm' element={<MembreForm/>}></Route>
     </Routes>
   );

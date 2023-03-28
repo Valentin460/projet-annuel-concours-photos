@@ -1,12 +1,14 @@
 import { React, useState, useEffect } from 'react'
 import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
+import moment from 'moment'
 
 function UserForm() {
 
     const [user, setUser] = useState({
         email: '',
         password: '',
-        status: true,
+        etat: true,
         gender: [],
         createdAt: '',
         firstName: '',
@@ -17,26 +19,29 @@ function UserForm() {
         city: '',
         country: '',
         telMobile: '',
+        dateCreation: '2023-03-28T00:00:00+02:00'
 
     })
     const [newEmail, setNewEmail] = useState('')
     const [currentEmail, setCurrentEmail] = useState('')
     const [emailChange, setEmailChange] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
+    const location = useLocation();
+    const navigate = useNavigate();
 
-
+    useEffect(() => {
+        if (location.state.id !== 'undefined') {
+            axios.get('http://localhost:8000/api/users/' + location.state.id)
+                .then(response => {
+                    setUser(response.data)
+                    setCurrentEmail(response.data.email)
+                })
+        }
+    }, []);
 
 
     useEffect(() => {
-        getCurrentUser()
-        axios.get('http://localhost:8000/api/users/' + currentUser)
-            .then(response => {
-                setUser(response.data)
-                setCurrentEmail(response.data.email)
-            })
-    }, [currentUser])
-
-    useEffect(() => {
+        // setUser({...user, date_creation: moment().format()})
         if (user.email !== newEmail && currentEmail !== user.email) {
             setEmailChange(true)
         } else {
@@ -52,35 +57,20 @@ function UserForm() {
         }
     }, [newEmail]);
 
-    function getCurrentUser() {
-        axios.get('http://localhost:8000/api/auth')
-            .then(response => {
-                setCurrentUser(response.data.id)
-
-            }).catch(err => {
-                if (err.response.status === 401) {
-                    console.log(err.response.status)
-                }
-            }
-
-            )
-    }
-
-    function updateUser() {
-        if (emailChange === false) {
-             axios.put('http://localhost:8000/api/users/' + currentUser, user)
-            .then(response => {
-                console.log(response)
-            })
-        } else {
-            alert('non non non')
-        }
-       
-    }
+    // function getCurrentUser() {
+    //     axios.get('http://localhost:8000/api/auth')
+    //         .then(response => {
+    //             setCurrentUser(response.data.id)
+    //         }).catch(err => {
+    //             if (err.response.status === 401) {
+    //                 console.log(err.response.status)
+    //             }
+    //         })
+    // }
 
     function emailValidation(event) {
         setUser({ ...user, email: event.target.value })
-        
+
 
     }
 
@@ -95,27 +85,49 @@ function UserForm() {
     }
 
     function handleSubmit() {
+        if (location.state.id !== 'undefined') {
+            if (emailChange === false) {
+                axios.put('http://localhost:8000/api/users/' + location.state.id, user)
+                    .then(response => {
+                        navigate('/userList')
+                        console.log(response)
+                    })
+            } else {
+                alert('non non non')
+            }
+        } else {
+            if (emailChange === false) {
+                // setUser({...user, date_creation: Date()})
+                axios.post('http://localhost:8000/api/users', user)
+                    .then(response => {
+                        navigate('/userList')
+                        console.log(response)
+                    })
+            } else {
+                alert('non non non')
+            }
+        }
 
     }
 
     return (
         <div className='container'>
-            <h1 className='text-center'>Modifier votre profil</h1>
+            <h1 className='text-center'>{location.state.id !== 'undefined' ? 'Modifier': 'Ajouter'} votre profil</h1>
             <form className='row'>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='email'>Email</label>
                     <input name='email' type={'email'} className='form-control' value={user.email} onChange={(event) => emailValidation(event)} />
 
                     <label htmlFor='confirmEmail'>Confirmation email</label>
-                    <input name='email' type={'email'} className='form-control'  value={newEmail}  onChange={(event) => newEmailValidation(event) }/>
-                    {emailChange ? <p className='text-danger'>L'email ne correspond pas</p>: ''}
+                    <input name='email' type={'email'} className='form-control' value={newEmail} onChange={(event) => newEmailValidation(event)} />
+                    {emailChange ? <p className='text-danger'>L'email ne correspond pas</p> : ''}
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='password'>Mot de passe</label>
                     <input type={'password'} name='password' className='form-control' onChange={(event) => setUser({ ...user, password: event.target.value })} />
 
                     <label htmlFor='confirmPassword'>Confirmation mot de passe</label>
-                    <input type={'password'} name='password' className='form-control'/>
+                    <input type={'password'} name='password' className='form-control' />
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='firstName'>Prénom</label>
@@ -127,7 +139,7 @@ function UserForm() {
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='dateOfBirth'>Date de naissance</label>
-                    <input name='dateOfBirth' value={user.dateBorn} className='form-control' onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
+                    <input name='dateOfBirth' type={'date'} value={user.dateBorn} className='form-control' onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='address'>Adresse</label>
@@ -147,10 +159,10 @@ function UserForm() {
                 </div>
                 <div className='d-flex flex-column col-lg-2 mb-3'>
                     <label htmlFor='phoneNumber'>Téléphone</label>
-                    <input name='phoneNumber' value={user.telMobile} className='form-control'  onChange={(event) => setUser({ ...user, telMobile: event.target.value })} />
+                    <input name='phoneNumber' value={user.telMobile} className='form-control' onChange={(event) => setUser({ ...user, telMobile: event.target.value })} />
                 </div>
-                <button type='button' className='btn btn-primary offset-lg-5 col-lg-2' onClick={() => updateUser()}>Enregister</button>
-                {/* <button type='button' className='btn btn-warning offset-lg-5 col-lg-2' onClick={() => console.log(currentEmail)}>log</button> */}
+                <button type='button' className='btn btn-primary offset-lg-5 col-lg-2' onClick={() => handleSubmit()}>Enregister</button>
+                <button type='button' className='btn btn-warning offset-lg-5 col-lg-2' onClick={() => console.log(user.date_creation)}>log</button>
             </form>
         </div>
     );
