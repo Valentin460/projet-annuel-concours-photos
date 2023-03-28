@@ -6,6 +6,9 @@ import UserForm from './Components/UserForm';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios'
+import OrganisationForm from "./Components/OrganisationForm";
+import ConcoursForm from "./Components/ConcoursForm";
+import MembreForm from "./Components/MembreForm";
 
 export const setAuthToken = token => {
   if (token) {
@@ -26,6 +29,9 @@ function App() {
     <Routes>
       <Route path='/' element={<LoginForm/>}></Route>
       <Route path='/userForm' element={<UserForm/>}></Route>
+      <Route path='/organisationForm' element={<OrganisationForm/>}></Route>
+      <Route path='/concoursForm' element={<ConcoursForm/>}></Route>
+      <Route path='/membreForm' element={<MembreForm/>}></Route>
     </Routes>
   );
 }
