@@ -23,7 +23,7 @@ function App() {
   
   return (
     <Routes>
-      <Route path='/login' element={<LoginForm/>}></Route>
+      <Route path='/' element={<LoginForm/>}></Route>
     </Routes>
   );
 }

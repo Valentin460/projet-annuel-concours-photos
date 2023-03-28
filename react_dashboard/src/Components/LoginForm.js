@@ -31,12 +31,12 @@ function LoginForm() {
         <div className='container'>
             <form className='row flex-column align-items-center'>
                 <div className='d-flex flex-column col-4 col-lg-2'>
-                    <label htmlFor="username" className=''>Username</label>
-                    <input id='username' value={username} onChange={(event) => setUsername(event.target.value)} />
+                    <label htmlFor="username">Username</label>
+                    <input name='username' type={'email'} value={username} onChange={(event) => setUsername(event.target.value)} />
                 </div>
                 <div className='d-flex flex-column col-4 col-lg-2 mb-3'>
                     <label htmlFor="password">Password</label>
-                    <input id='password' value={password} onChange={(event) => setPassword(event.target.value)} />
+                    <input name='password' type={'password'} value={password} onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <button type='button' onClick={() => getConnection()} className='btn btn-primary col-4 col-lg-2'>Connexion</button>
             </form>
