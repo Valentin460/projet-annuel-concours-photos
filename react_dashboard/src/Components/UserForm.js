@@ -104,50 +104,50 @@ function UserForm() {
             <form className='row'>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='email'>Email</label>
-                    <input name='email' type={'email'} value={user.email} onChange={(event) => emailValidation(event)} />
+                    <input name='email' type={'email'} className='form-control' value={user.email} onChange={(event) => emailValidation(event)} />
 
                     <label htmlFor='confirmEmail'>Confirmation email</label>
-                    <input name='email' type={'email'}  value={newEmail}  onChange={(event) => newEmailValidation(event) }/>
+                    <input name='email' type={'email'} className='form-control'  value={newEmail}  onChange={(event) => newEmailValidation(event) }/>
                     {emailChange ? <p className='text-danger'>L'email ne correspond pas</p>: ''}
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='password'>Mot de passe</label>
-                    <input type={'password'} name='password' onChange={(event) => setUser({ ...user, password: event.target.value })} />
+                    <input type={'password'} name='password' className='form-control' onChange={(event) => setUser({ ...user, password: event.target.value })} />
 
                     <label htmlFor='confirmPassword'>Confirmation mot de passe</label>
-                    <input type={'password'} name='password' />
+                    <input type={'password'} name='password' className='form-control'/>
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='firstName'>Prénom</label>
-                    <input name='firstName' value={user.firstName} onChange={(event) => setUser({ ...user, firstName: event.target.value })} />
+                    <input name='firstName' value={user.firstName} className='form-control' onChange={(event) => setUser({ ...user, firstName: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='lastName'>Nom</label>
-                    <input name='lastName' value={user.name} onChange={(event) => setUser({ ...user, name: event.target.value })} />
+                    <input name='lastName' value={user.name} className='form-control' onChange={(event) => setUser({ ...user, name: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='dateOfBirth'>Date de naissance</label>
-                    <input name='dateOfBirth' value={user.dateBorn} onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
+                    <input name='dateOfBirth' value={user.dateBorn} className='form-control' onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='address'>Adresse</label>
-                    <input name='address' value={user.adresse} onChange={(event) => setUser({ ...user, adresse: event.target.value })} />
+                    <input name='address' value={user.adresse} className='form-control' onChange={(event) => setUser({ ...user, adresse: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='postalCode'>Code postal</label>
-                    <input name='postalCode' value={user.cp} onChange={(event) => setUser({ ...user, cp: event.target.value })} />
+                    <input name='postalCode' value={user.cp} className='form-control' onChange={(event) => setUser({ ...user, cp: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='city'>Ville</label>
-                    <input name='city' value={user.city} onChange={(event) => setUser({ ...user, city: event.target.value })} />
+                    <input name='city' value={user.city} className='form-control' onChange={(event) => setUser({ ...user, city: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='country'>Pays</label>
-                    <input name='country' value={user.country} onChange={(event) => setUser({ ...user, country: event.target.value })} />
+                    <input name='country' value={user.country} className='form-control' onChange={(event) => setUser({ ...user, country: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column col-lg-2 mb-3'>
                     <label htmlFor='phoneNumber'>Téléphone</label>
-                    <input name='phoneNumber' value={user.telMobile} onChange={(event) => setUser({ ...user, telMobile: event.target.value })} />
+                    <input name='phoneNumber' value={user.telMobile} className='form-control'  onChange={(event) => setUser({ ...user, telMobile: event.target.value })} />
                 </div>
                 <button type='button' className='btn btn-primary offset-lg-5 col-lg-2' onClick={() => updateUser()}>Enregister</button>
                 {/* <button type='button' className='btn btn-warning offset-lg-5 col-lg-2' onClick={() => console.log(currentEmail)}>log</button> */}

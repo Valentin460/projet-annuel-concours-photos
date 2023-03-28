@@ -9,6 +9,7 @@ import axios from 'axios'
 import OrganisationForm from "./Components/OrganisationForm";
 import ConcoursForm from "./Components/ConcoursForm";
 import MembreForm from "./Components/MembreForm";
+import Home from './Components/Home';
 
 export const setAuthToken = token => {
   if (token) {
@@ -28,6 +29,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<LoginForm/>}></Route>
+      <Route path='/home' element={<Home/>}></Route>
       <Route path='/userForm' element={<UserForm/>}></Route>
       <Route path='/organisationForm' element={<OrganisationForm/>}></Route>
       <Route path='/concoursForm' element={<ConcoursForm/>}></Route>

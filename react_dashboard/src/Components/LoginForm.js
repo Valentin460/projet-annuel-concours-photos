@@ -23,7 +23,7 @@ function LoginForm() {
                 if (jwt) {
                     localStorage.setItem('jwt', jwt);
                     setAuthToken(jwt);
-                    navigate('/userForm')
+                    navigate('/home')
                     
                 }
             })
@@ -34,11 +34,11 @@ function LoginForm() {
             <form className='row flex-column align-items-center'>
                 <div className='d-flex flex-column col-4 col-lg-2'>
                     <label htmlFor="username">Username</label>
-                    <input name='username' type={'email'} value={username} onChange={(event) => setUsername(event.target.value)} />
+                    <input name='username' className='form-control' type={'email'} value={username} onChange={(event) => setUsername(event.target.value)} />
                 </div>
                 <div className='d-flex flex-column col-4 col-lg-2 mb-3'>
                     <label htmlFor="password">Password</label>
-                    <input name='password' type={'password'} value={password} onChange={(event) => setPassword(event.target.value)} />
+                    <input name='password' className='form-control' type={'password'} value={password} onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <button type='button' onClick={() => getConnection()} className='btn btn-primary col-4 col-lg-2'>Connexion</button>
             </form>
