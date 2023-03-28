@@ -3,18 +3,29 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\AuthController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'post', 'get', 
+        'Auth' => [
+            'method' => 'get',
+            'path' => '/auth',
+            'controller' => AuthController::class,
+        ]
+    ]
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -72,6 +83,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToMany(targetEntity: Organisation::class, mappedBy: 'user')]
     private Collection $organisation;
+
+    private UserPasswordHasherInterface $hasher;
+
+    private $plainPassword;
 
     public function __construct()
     {
@@ -146,6 +161,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(PasswordAuthenticatedUserInterface $user, string $plainPassword): self
+    {
+        $this->plainPassword = $this->hasher->hashPassword($user, $plainPassword);
+
+        return $this;
     }
 
     public function isEtat(): ?bool

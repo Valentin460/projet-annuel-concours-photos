@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Route, Routes} from 'react-router-dom'
 import LoginForm from './Components/LoginForm';
+import UserForm from './Components/UserForm';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios'
@@ -24,6 +25,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<LoginForm/>}></Route>
+      <Route path='/userForm' element={<UserForm/>}></Route>
     </Routes>
   );
 }

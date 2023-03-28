@@ -1,11 +1,13 @@
 import { React, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    
+    const navigate = useNavigate();
+
     const setAuthToken = token => {
         if (token) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -21,8 +23,8 @@ function LoginForm() {
                 if (jwt) {
                     localStorage.setItem('jwt', jwt);
                     setAuthToken(jwt);
-                    console.log(jwt)
-                    console.log(localStorage.getItem("jwt"))
+                    navigate('/userForm')
+                    
                 }
             })
     }
