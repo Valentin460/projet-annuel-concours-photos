@@ -5,24 +5,25 @@ function ConcoursForm() {
 
     const [concours, setConcours] = useState({
         status:'',
-        name: '',
+        name_concours: '',
         theme:'',
         categoryParticipant:'',
-        visualConcours:'',
+        visual_concours:'',
         description:'',
         reglement:'',
         dotations:'',
-        dateCreation:'',
-        datePublication:'',
-        dateStartSoumission:'',
-        dateEndSoumission:'',
-        dateStartVote:'',
-        dateEndVote:'',
-        dateResult:'',
-        ponderation:'',
-        nbMaxVote:'',
+        date_creation:'',
+        date_publication:'',
+        date_start_soumission:'',
+        date_end_soumission:'',
+        date_start_votes:'',
+        date_end_votes:'',
+        date_results:'',
+        ponderation_votes_jury:'',
+        nb_max_votes:'',
         nbPrice:'',
-        criteres:'',
+        critere_age_min:'',
+        critere_age_max:'',
     })
     return (
         <div className="container">
@@ -36,8 +37,8 @@ function ConcoursForm() {
                     </label>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="name">Nom</label>
-                    <input className="form-control" type={"text"} name="name" value={concours.name} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="name_concours">Nom</label>
+                    <input className="form-control" type={"text"} name="name_concours" value={concours.name_concours} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="theme">Thème</label>
@@ -50,8 +51,8 @@ function ConcoursForm() {
                     <option></option>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="visualConcours">Visuel</label>
-                    <input className="form-control" type={"file"} name="visualConcours" value={concours.visualConcours } onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="visual_concours">Visuel</label>
+                    <input className="form-control" type={"file"} name="visual_concours" value={concours.visual_concours } onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="description">Description</label>
@@ -66,40 +67,44 @@ function ConcoursForm() {
                     <input className="form-control" type={"text"} name="dotations" value={concours.dotations} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="datePublication">Date publication</label>
-                    <input className="form-control" type={"date"} name="datePublication" value={concours.datePublication} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="date_publication">Date publication</label>
+                    <input className="form-control" type={"date"} name="date_publication" value={concours.date_publication} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="dateStartSoumission">Date début de soumission</label>
-                    <input className="form-control" type={"date"} name="dateStartSoumission" value={concours.dateStartSoumission} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="date_start_soumission">Date début de soumission</label>
+                    <input className="form-control" type={"date"} name="date_start_soumission" value={concours.date_start_soumission} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="dateEndSoumission">Date fin de soumission</label>
-                    <input className="form-control" type={"date"} name="dateEndSoumission" value={concours.dateEndSoumission} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="date_end_soumission">Date fin de soumission</label>
+                    <input className="form-control" type={"date"} name="date_end_soumission" value={concours.date_end_soumission} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="dateStartVote">Date début des votes</label>
-                    <input className="form-control" type={"date"} name="dateStartVote" value={concours.dateStartVote} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="date_start_votes">Date début des votes</label>
+                    <input className="form-control" type={"date"} name="date_start_votes" value={concours.date_start_votes} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="dateEndVote">Date fin des votes</label>
-                    <input className="form-control" type={"date"} name="dateEndVote" value={concours.dateEndVote} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="date_end_votes">Date fin des votes</label>
+                    <input className="form-control" type={"date"} name="date_end_votes" value={concours.date_end_votes} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="ponderation">Pondération</label>
-                    <input className="form-control" type={"text"} name="pondaration" value={concours.ponderation} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="date_results">Date résultats</label>
+                    <input className="form-control" type={"date"} name="date_results" value={concours.date_results} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="nbMaxVote">Nombre max de votes</label>
-                    <input className="form-control" type={"text"} name="nbMaxVote" value={concours.nbMaxVote} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="ponderation_votes_jury">Pondération</label>
+                    <input className="form-control" type={"text"} name="ponderation_votes_jury" value={concours.ponderation_votes_jury} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="nbPrix">Nombre de prix</label>
-                    <input className="form-control" type={"text"} name="nbPrix" value={concours.nbPrice} onChange={(event) => setConcours(event.target.value)}/>
+                    <label htmlFor="nb_max_votes">Nombre max de votes</label>
+                    <input className="form-control" type={"text"} name="nb_max_votes" value={concours.nb_max_votes} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
-                    <label htmlFor="criteres">Critères</label>
-                    <select name="criteres" className="form-control" value={concours.criteres} onChange={(event) => setConcours(event.target.value)}></select>
+                    <label htmlFor="nb_prix">Nombre de prix</label>
+                    <input className="form-control" type={"text"} name="nb_prix" value={concours.nb_prix} onChange={(event) => setConcours(event.target.value)}/>
+                </div>
+                <div className='form-group col-md-6'>
+                    <label htmlFor="critere_age_min critere_age_max">Critères</label>
+                    <select name="critere_age_min critere_age_max" className="form-control" value={concours.critere_age_min.critere_age_max} onChange={(event) => setConcours(event.target.value)}></select>
                     <option></option>
                 </div>
                 <button type='button' className='btn btn-primary col-4 col-lg-2'>Enregistrer</button>
