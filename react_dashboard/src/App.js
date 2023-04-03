@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './HomePage.css';
 import {Route, Routes} from 'react-router-dom'
 import LoginForm from './Components/LoginForm';
 import UserForm from './Components/UserForm';
@@ -14,6 +15,7 @@ import UserList from './Components/UserList';
 import OrganisationList from './Components/OrganisationListe';
 import ConcourList from './Components/ConcourList';
 import MembreList from './Components/MembreListe';
+import HomePage from './Components/HomePage';
 
 export const setAuthToken = token => {
   if (token) {
@@ -32,7 +34,8 @@ function App() {
   
   return (
     <Routes>
-      <Route path='/' element={<LoginForm/>}></Route>
+      <Route path='/' element={<HomePage/>}></Route>
+      <Route path='/login' element={<LoginForm/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
       <Route path='/userList' element={<UserList/>}></Route>
       <Route path='/userForm' element={<UserForm/>}></Route>

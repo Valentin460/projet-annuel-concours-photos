@@ -1,0 +1,147 @@
+.block-infos-home {
+    display: flex;
+}
+
+.card-photo {
+    width: 18rem;
+}
+
+.carousel-photos {
+    width: 66%;
+    float: left;
+    padding-right: 10px;
+}
+
+.infos-website {
+    font-size: 15px;
+    margin-left: 53px;
+    margin-top: 30px;
+}
+
+.last-photos {
+    margin-top: 30px;
+    font-size: 31px;
+}
+
+.link-footer {
+    float: left;
+    margin-left: 50px;
+}
+
+.navbar-brand {
+    background-color: #FFFFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nav-link-bold {
+    font-weight: bold;
+}
+
+.nav-item-user {
+    background-color: #f5f5f5;
+    border-radius: 7px;
+    margin-right: 5px;
+}
+
+.title-block-homepage {
+    float: left;
+}
+
+.title-photos {
+    margin-top: 15px;
+    font-size: 31px;
+    font-weight: bold;
+}
+
+.page-item-photos {
+    --bs-pagination-color: grey;
+}
+
+.pagination-photos {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pub-header {
+    width: 33%;
+    padding-left: 5px;
+}
+
+.pub-footer-1 {
+    width: 66%;
+    height: 365px;
+}
+
+.pub-footer-2 {
+    width: 33%;
+    height: 365px;
+    padding-left: 20px;
+}
+
+@media (max-width: 1400px) {
+    .nav-link-bold {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 1072px) {
+    .block-infos-home {
+        display: block;
+    }
+
+    .block-pagination {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+
+    .carousel-photos {
+        width: 100%;
+    }
+
+    .footer-homepage {
+        display: grid;
+        text-align: center;
+    }
+
+    .infos-website {
+        margin-left: auto;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .last-photos {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .link-footer {
+        font-size: 12px;
+    }
+
+    .nav-item-user {
+        margin-bottom: 5px;
+    }
+
+    .title-photos {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .pub-header {
+        width: 98%;
+        padding-left: 0;
+    }
+
+    .pub-footer-1 {
+        width: 100%;
+        height: auto;
+    }
+
+    .pub-footer-2 {
+        width: 100%;
+        height: auto;
+        padding-left: 0;
+    }
+}
