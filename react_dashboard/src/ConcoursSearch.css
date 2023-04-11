@@ -1,0 +1,45 @@
+.searchButton {
+    margin-right: 20px;
+}
+
+.searchBox {
+    margin-bottom: 20px;
+}
+
+.selectFilter {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.selectFilter1 {
+    margin-right: 20px;
+    padding-left: 10px;
+}
+
+.selectTheme {
+    margin-left: 20px!important;
+}
+
+@media (max-width: 1072px) {
+    .searchButton {
+        margin-right: 0;
+    }
+
+    .searchType {
+        width: 77%!important;
+    }
+
+    .selectFilter {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .selectTheme {
+        margin-left: 0!important;
+    }
+
+}
