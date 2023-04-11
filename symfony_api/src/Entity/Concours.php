@@ -74,7 +74,7 @@ class Concours
 
     #[ORM\ManyToOne(inversedBy: 'concours_publish')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Organisation $organisation_publish = null;
+    private ?Organisation $organisation_publish;
 
     #[ORM\OneToMany(mappedBy: 'concours', targetEntity: Photo::class)]
     private Collection $photos;
@@ -99,10 +99,8 @@ class Concours
 
     public function __construct()
     {
-        $this->organisation = new ArrayCollection();
+        $this->organisation_publish = new ArrayCollection();
         $this->photos = new ArrayCollection();
-        $this->membres_rank = new ArrayCollection();
-        $this->members_jury = new ArrayCollection();
         $this->themes = new ArrayCollection();
         $this->category_participant = new ArrayCollection();
         $this->critere = new ArrayCollection();
@@ -331,15 +329,7 @@ class Concours
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, organisation>
-     */
-    public function getOrganisation(): Collection
-    {
-        return $this->organisation;
-    }
-
+    
     public function getOrganisationPublish(): ?Organisation
     {
         return $this->organisation_publish;
