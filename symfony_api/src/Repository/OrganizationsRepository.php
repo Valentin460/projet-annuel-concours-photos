@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Organisation;
+use App\Entity\Organizations;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Organisation>
+ * @extends ServiceEntityRepository<Organizations>
  *
- * @method Organisation|null find($id, $lockMode = null, $lockVersion = null)
- * @method Organisation|null findOneBy(array $criteria, array $orderBy = null)
- * @method Organisation[]    findAll()
- * @method Organisation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Organizations|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Organizations|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Organizations[]    findAll()
+ * @method Organizations[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class OrganisationRepository extends ServiceEntityRepository
+class OrganizationsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Organisation::class);
+        parent::__construct($registry, Organizations::class);
     }
 
-    public function save(Organisation $entity, bool $flush = false): void
+    public function save(Organizations $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class OrganisationRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Organisation $entity, bool $flush = false): void
+    public function remove(Organizations $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class OrganisationRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Organisation[] Returns an array of Organisation objects
+//     * @return Organizations[] Returns an array of Organizations objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class OrganisationRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Organisation
+//    public function findOneBySomeField($value): ?Organizations
 //    {
 //        return $this->createQueryBuilder('o')
 //            ->andWhere('o.exampleField = :val')

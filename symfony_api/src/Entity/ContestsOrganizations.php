@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ConcoursOrganisationRepository;
+use App\Repository\ContestsOrganizationsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ConcoursOrganisationRepository::class)]
+#[ORM\Entity(repositoryClass: ContestsOrganizationsRepository::class)]
 #[ApiResource()]
-class ConcoursOrganisation
+class ContestsOrganizations
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,13 +28,13 @@ class ConcoursOrganisation
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\ManyToOne(inversedBy: 'concoursOrganisation')]
+    #[ORM\ManyToOne(inversedBy: 'contestsOrganizations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Organisation $concours = null;
+    private ?Organizations $contests = null;
 
-    #[ORM\ManyToOne(inversedBy: 'concoursOrganisation')]
+    #[ORM\ManyToOne(inversedBy: 'contestsOrganizations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Concours $organisation = null;
+    private ?Contests $organizations = null;
 
     public function getId(): ?int
     {
@@ -89,26 +89,26 @@ class ConcoursOrganisation
         return $this;
     }
 
-    public function getConcours(): ?Organisation
+    public function getContests(): ?Organizations
     {
-        return $this->concours;
+        return $this->contests;
     }
 
-    public function setConcours(?Organisation $concours): self
+    public function setContests(?Organizations $contests): self
     {
-        $this->concours = $concours;
+        $this->contests = $contests;
 
         return $this;
     }
 
-    public function getOrganisation(): ?Concours
+    public function getOrganizations(): ?Contests
     {
-        return $this->organisation;
+        return $this->organizations;
     }
 
-    public function setOrganisation(?Concours $organisation): self
+    public function setOrganizations(?Contests $organizations): self
     {
-        $this->organisation = $organisation;
+        $this->organizations = $organizations;
 
         return $this;
     }

@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\MembreConcoursRepository;
+use App\Repository\MembersContestsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: MembreConcoursRepository::class)]
+#[ORM\Entity(repositoryClass: MembersContestsRepository::class)]
 #[ApiResource]
-class MembreConcours
+class MembersContests
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,13 +22,13 @@ class MembreConcours
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_validate = null;
 
-    #[ORM\ManyToOne(inversedBy: 'membreConcours')]
+    #[ORM\ManyToOne(inversedBy: 'membersContests')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Concours $Concours = null;
+    private ?Contests $contests = null;
 
-    #[ORM\ManyToOne(inversedBy: 'membreConcours')]
+    #[ORM\ManyToOne(inversedBy: 'membersContests')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Membre $membre = null;
+    private ?Members $members = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fonction = null;
@@ -62,26 +62,26 @@ class MembreConcours
         return $this;
     }
 
-    public function getConcours(): ?Concours
+    public function getContests(): ?Contests
     {
-        return $this->Concours;
+        return $this->contests;
     }
 
-    public function setConcours(?Concours $Concours): self
+    public function setContests(?Contests $contests): self
     {
-        $this->Concours = $Concours;
+        $this->contests = $contests;
 
         return $this;
     }
 
-    public function getMembre(): ?Membre
+    public function getMembers(): ?Members
     {
-        return $this->membre;
+        return $this->members;
     }
 
-    public function setMembre(?Membre $membre): self
+    public function setMembers(?Members $members): self
     {
-        $this->membre = $membre;
+        $this->members = $members;
 
         return $this;
     }

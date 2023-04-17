@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\AnnonceRepository;
+use App\Repository\AdvertisementsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AnnonceRepository::class)]
+#[ORM\Entity(repositoryClass: AdvertisementsRepository::class)]
 #[ApiResource()]
-class Annonce
+class Advertisements
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -34,13 +34,13 @@ class Annonce
     #[ORM\Column]
     private ?int $nb_clicks = null;
 
-    #[ORM\ManyToOne(inversedBy: 'annonce')]
+    #[ORM\ManyToOne(inversedBy: 'advertisements')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Organisation $organisation = null;
+    private ?Organizations $organization = null;
 
-    #[ORM\ManyToOne(inversedBy: 'annonce')]
+    #[ORM\ManyToOne(inversedBy: 'advertisements')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?EspacePublicitaire $espace_publicitaire = null;
+    private ?AdvertisingPlaces $advertising_places = null;
 
     public function getId(): ?int
     {
@@ -119,26 +119,26 @@ class Annonce
         return $this;
     }
 
-    public function getOrganisation(): ?Organisation
+    public function getOrganizations(): ?Organizations
     {
-        return $this->organisation;
+        return $this->organization;
     }
 
-    public function setOrganisation(?Organisation $organisation): self
+    public function setOrganizations(?Organizations $organization): self
     {
-        $this->organisation = $organisation;
+        $this->organization = $organization;
 
         return $this;
     }
 
-    public function getEspacePublicitaire(): ?EspacePublicitaire
+    public function getAdvertisingPlaces(): ?AdvertisingPlaces
     {
-        return $this->espace_publicitaire;
+        return $this->advertising_places;
     }
 
-    public function setEspacePublicitaire(?EspacePublicitaire $espace_publicitaire): self
+    public function setAdvertisingPlaces(?AdvertisingPlaces $advertising_places): self
     {
-        $this->espace_publicitaire = $espace_publicitaire;
+        $this->advertising_places = $advertising_places;
 
         return $this;
     }

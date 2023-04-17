@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\MembrePhotoRepository;
+use App\Repository\MembersPicturesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: MembrePhotoRepository::class)]
+#[ORM\Entity(repositoryClass: MembersPicturesRepository::class)]
 #[ApiResource()]
-class MembrePhoto
+class MembersPictures
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,13 +19,13 @@ class MembrePhoto
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_vote = null;
 
-    #[ORM\ManyToOne(inversedBy: 'membrePhoto')]
+    #[ORM\ManyToOne(inversedBy: 'membersPictures')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Membre $photo = null;
+    private ?Members $pictures = null;
 
-    #[ORM\ManyToOne(inversedBy: 'membrePhoto')]
+    #[ORM\ManyToOne(inversedBy: 'membersPictures')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Photo $membre = null;
+    private ?Pictures $members = null;
 
     public function getId(): ?int
     {
@@ -44,26 +44,26 @@ class MembrePhoto
         return $this;
     }
 
-    public function getPhoto(): ?Membre
+    public function getPictures(): ?Members
     {
-        return $this->photo;
+        return $this->pictures;
     }
 
-    public function setPhoto(?Membre $photo): self
+    public function setPictures(?Members $pictures): self
     {
-        $this->photo = $photo;
+        $this->pictures = $pictures;
 
         return $this;
     }
 
-    public function getMembre(): ?Photo
+    public function getMembers(): ?Pictures
     {
-        return $this->membre;
+        return $this->members;
     }
 
-    public function setMembre(Photo $membre): self
+    public function setMembers(Pictures $members): self
     {
-        $this->membre = $membre;
+        $this->members = $members;
 
         return $this;
     }

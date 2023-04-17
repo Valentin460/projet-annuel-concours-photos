@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\EspacePublicitaireRepository;
+use App\Repository\AdvertisingPlacesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EspacePublicitaireRepository::class)]
+#[ORM\Entity(repositoryClass: AdvertisingPlacesRepository::class)]
 #[ApiResource()]
-class EspacePublicitaire
+class AdvertisingPlaces
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,7 +18,7 @@ class EspacePublicitaire
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?bool $etat = null;
+    private ?bool $state = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name_place = null;
@@ -32,12 +32,12 @@ class EspacePublicitaire
     #[ORM\Column]
     private ?int $price_reference = null;
 
-    #[ORM\OneToMany(mappedBy: 'espace_publicitaire', targetEntity: Annonce::class)]
-    private Collection $annonce;
+    #[ORM\OneToMany(mappedBy: 'advertising_places', targetEntity: Advertisements::class)]
+    private Collection $advertisements;
 
     public function __construct()
     {
-        $this->annonce = new ArrayCollection();
+        $this->advertisements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -45,14 +45,14 @@ class EspacePublicitaire
         return $this->id;
     }
 
-    public function isEtat(): ?bool
+    public function isState(): ?bool
     {
-        return $this->etat;
+        return $this->state;
     }
 
-    public function setEtat(bool $etat): self
+    public function setState(bool $state): self
     {
-        $this->etat = $etat;
+        $this->state = $state;
 
         return $this;
     }
@@ -108,27 +108,27 @@ class EspacePublicitaire
     /**
      * @return Collection<int, Annonce>
      */
-    public function getAnnonce(): Collection
+    public function getAdvertisements(): Collection
     {
-        return $this->annonce;
+        return $this->advertisements;
     }
 
-    public function addAnnonce(Annonce $annonce): self
+    public function addAnnonce(Advertisements $advertisements): self
     {
-        if (!$this->annonce->contains($annonce)) {
-            $this->annonce->add($annonce);
-            $annonce->setEspacePublicitaire($this);
+        if (!$this->advertisements->contains($advertisements)) {
+            $this->advertisements->add($advertisements);
+            $advertisements->setAdvertisingPlaces($this);
         }
 
         return $this;
     }
 
-    public function removeAnnonce(Annonce $annonce): self
+    public function removeAdvertisements(Advertisements $advertisements): self
     {
-        if ($this->annonce->removeElement($annonce)) {
+        if ($this->advertisements->removeElement($advertisements)) {
             // set the owning side to null (unless already changed)
-            if ($annonce->getEspacePublicitaire() === $this) {
-                $annonce->setEspacePublicitaire(null);
+            if ($advertisements->getAdvertisingPlaces() === $this) {
+                $advertisements->setAdvertisingPlaces(null);
             }
         }
 

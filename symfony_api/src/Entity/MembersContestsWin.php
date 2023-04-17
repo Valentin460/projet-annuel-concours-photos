@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\MembreConcoursWinRepository;
+use App\Repository\MembersContestsWinRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Context;
 
-#[ORM\Entity(repositoryClass: MembreConcoursWinRepository::class)]
+#[ORM\Entity(repositoryClass: MembersContestsWinRepository::class)]
 #[ApiResource()]
-class MembreConcoursWin
+class MembersContestsWin
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,13 +19,13 @@ class MembreConcoursWin
     #[ORM\Column]
     private ?int $rank_price = null;
 
-    #[ORM\ManyToOne(inversedBy: 'membreConcoursWin')]
+    #[ORM\ManyToOne(inversedBy: 'membersContestsWin')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Membre $concours = null;
+    private ?Members $contests = null;
 
-    #[ORM\ManyToOne(inversedBy: 'membreConcoursWin')]
+    #[ORM\ManyToOne(inversedBy: 'membersContestsWin')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Concours $membre = null;
+    private ?Contests $members = null;
 
     public function getId(): ?int
     {
@@ -43,26 +44,26 @@ class MembreConcoursWin
         return $this;
     }
 
-    public function getConcours(): ?Membre
+    public function getContests(): ?Members
     {
-        return $this->concours;
+        return $this->contests;
     }
 
-    public function setConcours(?Membre $concours): self
+    public function setContests(?Members $contests): self
     {
-        $this->concours = $concours;
+        $this->contests = $contests;
 
         return $this;
     }
 
-    public function getMembre(): ?Concours
+    public function getMembers(): ?Contests
     {
-        return $this->membre;
+        return $this->members;
     }
 
-    public function setMembre(?Concours $membre): self
+    public function setMembers(?Contests $members): self
     {
-        $this->membre = $membre;
+        $this->members = $members;
 
         return $this;
     }

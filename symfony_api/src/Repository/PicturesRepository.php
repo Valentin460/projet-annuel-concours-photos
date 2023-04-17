@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Photo;
+use App\Entity\Pictures;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Photo>
+ * @extends ServiceEntityRepository<Pictures>
  *
- * @method Photo|null find($id, $lockMode = null, $lockVersion = null)
- * @method Photo|null findOneBy(array $criteria, array $orderBy = null)
- * @method Photo[]    findAll()
- * @method Photo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Pictures|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Pictures|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Pictures[]    findAll()
+ * @method Pictures[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PhotoRepository extends ServiceEntityRepository
+class PicturesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Photo::class);
+        parent::__construct($registry, Pictures::class);
     }
 
-    public function save(Photo $entity, bool $flush = false): void
+    public function save(Pictures $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class PhotoRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Photo $entity, bool $flush = false): void
+    public function remove(Pictures $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class PhotoRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Photo[] Returns an array of Photo objects
+//     * @return Pictures[] Returns an array of Pictures objects
 //     */
 //    public function findByExampleField($value): array
 //    {

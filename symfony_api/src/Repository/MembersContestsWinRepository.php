@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\MembreConcoursWin;
+use App\Entity\MembersContestsWin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<MembreConcoursWin>
+ * @extends ServiceEntityRepository<MembersContestsWin>
  *
- * @method MembreConcoursWin|null find($id, $lockMode = null, $lockVersion = null)
- * @method MembreConcoursWin|null findOneBy(array $criteria, array $orderBy = null)
- * @method MembreConcoursWin[]    findAll()
- * @method MembreConcoursWin[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method MembersContestsWin|null find($id, $lockMode = null, $lockVersion = null)
+ * @method MembersContestsWin|null findOneBy(array $criteria, array $orderBy = null)
+ * @method MembersContestsWin[]    findAll()
+ * @method MembersContestsWin[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MembreConcoursWinRepository extends ServiceEntityRepository
+class MembersContestsWinRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MembreConcoursWin::class);
+        parent::__construct($registry, MembersContestsWin::class);
     }
 
-    public function save(MembreConcoursWin $entity, bool $flush = false): void
+    public function save(MembersContestsWin $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class MembreConcoursWinRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(MembreConcoursWin $entity, bool $flush = false): void
+    public function remove(MembersContestsWin $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class MembreConcoursWinRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return MembreConcoursWin[] Returns an array of MembreConcoursWin objects
+//     * @return MembersContestsWin[] Returns an array of MembersContestsWin objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class MembreConcoursWinRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?MembreConcoursWin
+//    public function findOneBySomeField($value): ?MembersContestsWin
 //    {
 //        return $this->createQueryBuilder('m')
 //            ->andWhere('m.exampleField = :val')

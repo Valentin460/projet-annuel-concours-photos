@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\MembreConcours;
+use App\Entity\Members;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<MembreConcours>
+ * @extends ServiceEntityRepository<Members>
  *
- * @method MembreConcours|null find($id, $lockMode = null, $lockVersion = null)
- * @method MembreConcours|null findOneBy(array $criteria, array $orderBy = null)
- * @method MembreConcours[]    findAll()
- * @method MembreConcours[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Members|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Members|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Members[]    findAll()
+ * @method Members[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MembreConcoursRepository extends ServiceEntityRepository
+class MembersRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MembreConcours::class);
+        parent::__construct($registry, Members::class);
     }
 
-    public function save(MembreConcours $entity, bool $flush = false): void
+    public function save(Members $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class MembreConcoursRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(MembreConcours $entity, bool $flush = false): void
+    public function remove(Members $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class MembreConcoursRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return MembreConcours[] Returns an array of MembreConcours objects
+//     * @return Members[] Returns an array of Members objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class MembreConcoursRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?MembreConcours
+//    public function findOneBySomeField($value): ?Members
 //    {
 //        return $this->createQueryBuilder('m')
 //            ->andWhere('m.exampleField = :val')

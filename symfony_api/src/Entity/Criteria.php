@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ThemeRepository;
+use App\Repository\CriteriaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ThemeRepository::class)]
+#[ORM\Entity(repositoryClass: CriteriaRepository::class)]
 #[ApiResource()]
-class Theme
+class Criteria
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,9 +18,9 @@ class Theme
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $theme = null;
+    private ?string $criteria = null;
 
-    #[ORM\ManyToMany(targetEntity: Contests::class, inversedBy: 'themes')]
+    #[ORM\ManyToMany(targetEntity: Contests::class, inversedBy: 'criteria')]
     private Collection $contests;
 
     public function __construct()
@@ -33,14 +33,14 @@ class Theme
         return $this->id;
     }
 
-    public function getTheme(): ?string
+    public function getCriteria(): ?string
     {
-        return $this->theme;
+        return $this->criteria;
     }
 
-    public function setTheme(string $theme): self
+    public function setCriteria(string $criteria): self
     {
-        $this->theme = $theme;
+        $this->criteria = $criteria;
 
         return $this;
     }
