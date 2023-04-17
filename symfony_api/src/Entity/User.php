@@ -79,10 +79,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $tel_mobile = null;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Membre $membre = null;
+    private ?Members $members = null;
 
-    #[ORM\ManyToMany(targetEntity: Organisation::class, mappedBy: 'user')]
-    private Collection $organisation;
+    #[ORM\ManyToMany(targetEntity: Organizations::class, mappedBy: 'user')]
+    private Collection $organizations;
 
     private UserPasswordHasherInterface $hasher;
 
@@ -90,7 +90,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->organisation = new ArrayCollection();
+        $this->organizations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -307,45 +307,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getMembre(): ?Membre
+    public function getMembers(): ?Members
     {
-        return $this->membre;
+        return $this->members;
     }
 
-    public function setMembre(Membre $membre): self
+    public function setMembers(Members $members): self
     {
         // set the owning side of the relation if necessary
-        if ($membre->getUser() !== $this) {
-            $membre->setUser($this);
+        if ($members->getUser() !== $this) {
+            $members->setUser($this);
         }
 
-        $this->membre = $membre;
+        $this->members = $members;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Organisation>
+     * @return Collection<int, Organizations>
      */
-    public function getOrganisation(): Collection
+    public function getOrganizations(): Collection
     {
-        return $this->organisation;
+        return $this->organizations;
     }
 
-    public function addOrganisation(Organisation $organisation): self
+    public function addOrganizations(Organizations $organizations): self
     {
-        if (!$this->organisation->contains($organisation)) {
-            $this->organisation->add($organisation);
-            $organisation->addUser($this);
+        if (!$this->organizations->contains($organizations)) {
+            $this->organizations->add($organizations);
+            $organizations->addUser($this);
         }
 
         return $this;
     }
 
-    public function removeOrganisation(Organisation $organisation): self
+    public function removeOrganisation(Organizations $organizations): self
     {
-        if ($this->organisation->removeElement($organisation)) {
-            $organisation->removeUser($this);
+        if ($this->organizations->removeElement($organizations)) {
+            $organizations->removeUser($this);
         }
 
         return $this;

@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\ConcoursOrganisation;
+use App\Entity\Criteria;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ConcoursOrganisation>
+ * @extends ServiceEntityRepository<Criteria>
  *
- * @method ConcoursOrganisation|null find($id, $lockMode = null, $lockVersion = null)
- * @method ConcoursOrganisation|null findOneBy(array $criteria, array $orderBy = null)
- * @method ConcoursOrganisation[]    findAll()
- * @method ConcoursOrganisation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Criteria|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Criteria|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Criteria[]    findAll()
+ * @method Criteria[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConcoursOrganisationRepository extends ServiceEntityRepository
+class CriteriaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ConcoursOrganisation::class);
+        parent::__construct($registry, Criteria::class);
     }
 
-    public function save(ConcoursOrganisation $entity, bool $flush = false): void
+    public function save(Criteria $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ConcoursOrganisationRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(ConcoursOrganisation $entity, bool $flush = false): void
+    public function remove(Criteria $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ConcoursOrganisationRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return ConcoursOrganisation[] Returns an array of ConcoursOrganisation objects
+//     * @return Criteria[] Returns an array of Criteria objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ConcoursOrganisationRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?ConcoursOrganisation
+//    public function findOneBySomeField($value): ?Criteria
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

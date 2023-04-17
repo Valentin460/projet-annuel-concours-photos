@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Concours;
+use App\Entity\ContestsOrganizations;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Concours>
+ * @extends ServiceEntityRepository<ContestsOrganizations>
  *
- * @method Concours|null find($id, $lockMode = null, $lockVersion = null)
- * @method Concours|null findOneBy(array $criteria, array $orderBy = null)
- * @method Concours[]    findAll()
- * @method Concours[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ContestsOrganizations|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ContestsOrganizations|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ContestsOrganizations[]    findAll()
+ * @method ContestsOrganizations[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConcoursRepository extends ServiceEntityRepository
+class ContestsOrganizationsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Concours::class);
+        parent::__construct($registry, ContestsOrganizations::class);
     }
 
-    public function save(Concours $entity, bool $flush = false): void
+    public function save(ContestsOrganizations $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ConcoursRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Concours $entity, bool $flush = false): void
+    public function remove(ContestsOrganizations $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ConcoursRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Concours[] Returns an array of Concours objects
+//     * @return ContestsOrganizations[] Returns an array of ContestsOrganizations objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ConcoursRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Concours
+//    public function findOneBySomeField($value): ?ContestsOrganizations
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

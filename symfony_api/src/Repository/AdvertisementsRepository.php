@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Annonce;
+use App\Entity\Advertisements;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Annonce>
+ * @extends ServiceEntityRepository<Advertisements>
  *
- * @method Annonce|null find($id, $lockMode = null, $lockVersion = null)
- * @method Annonce|null findOneBy(array $criteria, array $orderBy = null)
- * @method Annonce[]    findAll()
- * @method Annonce[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Advertisements|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Advertisements|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Advertisements[]    findAll()
+ * @method Advertisements[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AnnonceRepository extends ServiceEntityRepository
+class AdvertisementsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Annonce::class);
+        parent::__construct($registry, Advertisements::class);
     }
 
-    public function save(Annonce $entity, bool $flush = false): void
+    public function save(Advertisements $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AnnonceRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Annonce $entity, bool $flush = false): void
+    public function remove(Advertisements $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class AnnonceRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Annonce[] Returns an array of Annonce objects
+//     * @return Advertisements[] Returns an array of Advertisements objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class AnnonceRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Annonce
+//    public function findOneBySomeField($value): ?Advertisements
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

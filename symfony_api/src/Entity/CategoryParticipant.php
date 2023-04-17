@@ -20,12 +20,12 @@ class CategoryParticipant
     #[ORM\Column(length: 255)]
     private ?string $category_participant = null;
 
-    #[ORM\ManyToMany(targetEntity: Concours::class, inversedBy: 'category_participant')]
-    private Collection $concours;
+    #[ORM\ManyToMany(targetEntity: Contests::class, inversedBy: 'category_participant')]
+    private Collection $contests;
 
     public function __construct()
     {
-        $this->concours = new ArrayCollection();
+        $this->contests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,25 +46,25 @@ class CategoryParticipant
     }
 
     /**
-     * @return Collection<int, concours>
+     * @return Collection<int, contests>
      */
-    public function getConcours(): Collection
+    public function getContests(): Collection
     {
-        return $this->concours;
+        return $this->contests;
     }
 
-    public function addConcour(Concours $concour): self
+    public function addContests(Contests $contest): self
     {
-        if (!$this->concours->contains($concour)) {
-            $this->concours->add($concour);
+        if (!$this->contests->contains($contest)) {
+            $this->contests->add($contest);
         }
 
         return $this;
     }
 
-    public function removeConcour(Concours $concour): self
+    public function removeContests(Contests $contest): self
     {
-        $this->concours->removeElement($concour);
+        $this->contests->removeElement($contest);
 
         return $this;
     }

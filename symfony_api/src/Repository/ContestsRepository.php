@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Critere;
+use App\Entity\Contests;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Critere>
+ * @extends ServiceEntityRepository<Contests>
  *
- * @method Critere|null find($id, $lockMode = null, $lockVersion = null)
- * @method Critere|null findOneBy(array $criteria, array $orderBy = null)
- * @method Critere[]    findAll()
- * @method Critere[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Contests|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Contests|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Contests[]    findAll()
+ * @method Contests[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CritereRepository extends ServiceEntityRepository
+class ContestsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Critere::class);
+        parent::__construct($registry, Contests::class);
     }
 
-    public function save(Critere $entity, bool $flush = false): void
+    public function save(Contests $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CritereRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Critere $entity, bool $flush = false): void
+    public function remove(Contests $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CritereRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Critere[] Returns an array of Critere objects
+//     * @return Contests[] Returns an array of Contests objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CritereRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Critere
+//    public function findOneBySomeField($value): ?Contests
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

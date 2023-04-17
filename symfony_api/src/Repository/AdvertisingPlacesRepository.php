@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\EspacePublicitaire;
+use App\Entity\AdvertisingPlaces;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<EspacePublicitaire>
+ * @extends ServiceEntityRepository<AdvertisingPlaces>
  *
- * @method EspacePublicitaire|null find($id, $lockMode = null, $lockVersion = null)
- * @method EspacePublicitaire|null findOneBy(array $criteria, array $orderBy = null)
- * @method EspacePublicitaire[]    findAll()
- * @method EspacePublicitaire[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AdvertisingPlaces|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AdvertisingPlaces|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AdvertisingPlaces[]    findAll()
+ * @method AdvertisingPlaces[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EspacePublicitaireRepository extends ServiceEntityRepository
+class AdvertisingPlacesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, EspacePublicitaire::class);
+        parent::__construct($registry, AdvertisingPlaces::class);
     }
 
-    public function save(EspacePublicitaire $entity, bool $flush = false): void
+    public function save(AdvertisingPlaces $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class EspacePublicitaireRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(EspacePublicitaire $entity, bool $flush = false): void
+    public function remove(AdvertisingPlaces $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class EspacePublicitaireRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return EspacePublicitaire[] Returns an array of EspacePublicitaire objects
+//     * @return AdvertisingPlaces[] Returns an array of AdvertisingPlaces objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class EspacePublicitaireRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?EspacePublicitaire
+//    public function findOneBySomeField($value): ?AdvertisingPlaces
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')
