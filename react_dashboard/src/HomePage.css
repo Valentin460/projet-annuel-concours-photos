@@ -12,6 +12,22 @@
     padding-right: 10px;
 }
 
+.concours-infos {
+    font-size: 13px;
+    float: left;
+    margin-right: 10px;
+    background-color: #f5f5f5;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 50%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.dateConcours {
+    font-size: 13px;
+}
+
 .infos-website {
     font-size: 15px;
     margin-left: 53px;
