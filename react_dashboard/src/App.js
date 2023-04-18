@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import './HomePage.css';
-import  './ConcoursSearch.css';
+import './ConcoursSearch.css';
+import './InfoContest.css';
 import {Route, Routes} from 'react-router-dom'
 import LoginForm from './Components/LoginForm';
 import UserForm from './Components/UserForm';
@@ -18,6 +19,7 @@ import ConcourList from './Components/ConcourList';
 import MembreList from './Components/MembreListe';
 import HomePage from './Components/HomePage';
 import ConcoursSearch from "./Components/ConcoursSearch";
+import InfoContest from "./Components/InfoContest";
 
 export const setAuthToken = token => {
   if (token) {
@@ -46,6 +48,7 @@ function App() {
       <Route path='/concourList' element={<ConcourList/>}></Route>
       <Route path='/concoursForm' element={<ConcoursForm/>}></Route>
       <Route path='/concoursSearch' element={<ConcoursSearch/>}></Route>
+      <Route path='/infoContest' element={<InfoContest/>}></Route>
       <Route path='/membreList' element={<MembreList/>}></Route>
       <Route path='/membreForm' element={<MembreForm/>}></Route>
     </Routes>

@@ -11,7 +11,7 @@ function HomePage() {
     }, []);
 
     function getHomePageConcours() {
-        axios.get('http://localhost:8000/api/concours')
+        axios.get('http://localhost:8000/api/contests')
             .then(response => {
                 setHomePageConcours(response.data['hydra:member'])
             })
@@ -122,11 +122,11 @@ function HomePage() {
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     {homePageConcours.map(concour => {
                         return (
-                            <div className="col">
-                                <div className="card">
+                            <div className="col" key={concour.id}>
+                                <a onClick={() => { navigate('/InfoContest', {state: {id: concour.id}}) }}><div className="card">
                                     <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."/>
                                     <div className="card-body">
-                                        <h5 className="card-title">{concour.name_concours}</h5>
+                                        <h5 className="card-title">{concour.id} {concour.name_contests}</h5>
                                         <p className="card-text concours-infos">{concour.name_organisation}</p>
                                         <p className="card-text concours-infos">Nature</p>
                                         <p className="card-text concours-infos">{concour.status}</p>
@@ -162,7 +162,7 @@ function HomePage() {
                                                     d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
                                             </svg></p>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         )
                     })}
