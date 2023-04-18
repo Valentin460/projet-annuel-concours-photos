@@ -99,14 +99,58 @@ function InfoContest() {
                 </div>
             </nav>
             <div className="container">
-                <div>
-                    <h1 className="title-photos">{infoContest.name_contests}</h1>
-                    <p className="card-text concours-unique-infos">Thème :</p>
-                    <p className="card-text concours-unique-infos">Pays :</p>
-                    <p className="card-text concours-unique-infos">Région :</p>
-                    <p className="card-text concours-unique-infos">Catégorie :</p>
-                    <p className="card-text concours-unique-infos">Âge :</p>
-                    <p className="card-text concours-unique-infos">Dotation :</p>
+                <div className="row">
+                    <div className="col-8">
+                        <h1 className="title-photos">{infoContest.name_contests}</h1>
+                        <p className="card-text concours-unique-infos">Thème :</p>
+                        <p className="card-text concours-unique-infos">Pays :</p>
+                        <p className="card-text concours-unique-infos">Région :</p>
+                        <p className="card-text concours-unique-infos">Catégorie :</p>
+                        <p className="card-text concours-unique-infos">Âge :</p>
+                        <p className="card-text concours-unique-infos">Dotation :</p>
+                    </div>
+                    <div className="col-4 bloc-status-contest">
+                        <p>Organisateur : <b className="name-organizations">URCAUE des Hauts-de-France</b></p>
+                        <p className="card-text concours-unique-infos status-concours">PHASE DE VOTE</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" className="bi bi-clock" viewBox="0 0 16 16">
+                        <path
+                            d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path
+                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>
+                        <br/><br/>
+                            <p className="card-text concours-infos">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     className="bi bi-person-dash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                                    <path
+                                        d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"></path>
+                                </svg>
+                                121
+                            </p>
+                        <p className="card-text concours-infos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 className="bi bi-camera" viewBox="0 0 16 16">
+                                <path
+                                    d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"></path>
+                                <path
+                                    d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"></path>
+                            </svg>
+                            458
+                        </p>
+                        <p className="card-text concours-infos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 className="bi bi-eye" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                            </svg>
+                            1257
+                        </p>
+                    </div>
                 </div>
                 <img
                     src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg"
@@ -156,33 +200,33 @@ function InfoContest() {
                 <div className="col-8">
                 <ul className="nav nav-tabs container" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link active" id="concours-tab" data-bs-toggle="tab"
+                        <button className="nav-link active sections-contests" id="concours-tab" data-bs-toggle="tab"
                                 data-bs-target="#concours"
                                 type="button" role="tab" aria-controls="concours" aria-selected="true">Le concours
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="reglement-tab" data-bs-toggle="tab" data-bs-target="#reglement"
+                        <button className="nav-link sections-contests" id="reglement-tab" data-bs-toggle="tab" data-bs-target="#reglement"
                                 type="button" role="tab" aria-controls="reglement" aria-selected="false">Règlement
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="price-tab" data-bs-toggle="tab" data-bs-target="#price"
+                        <button className="nav-link sections-contests" id="price-tab" data-bs-toggle="tab" data-bs-target="#price"
                                 type="button" role="tab" aria-controls="price" aria-selected="false">Prix à gagner
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="members-tab" data-bs-toggle="tab" data-bs-target="#members"
+                        <button className="nav-link sections-contests" id="members-tab" data-bs-toggle="tab" data-bs-target="#members"
                                 type="button" role="tab" aria-controls="members" aria-selected="false">Membres du Jury
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pictures-tab" data-bs-toggle="tab" data-bs-target="#pictures"
+                        <button className="nav-link sections-contests" id="pictures-tab" data-bs-toggle="tab" data-bs-target="#pictures"
                                 type="button" role="tab" aria-controls="pictures" aria-selected="false">Les photos
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="results-tab" data-bs-toggle="tab" data-bs-target="#results"
+                        <button className="nav-link sections-contests" id="results-tab" data-bs-toggle="tab" data-bs-target="#results"
                                 type="button" role="tab" aria-controls="results" aria-selected="false">Résultats
                         </button>
                     </li>
