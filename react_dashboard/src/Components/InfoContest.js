@@ -40,7 +40,7 @@ function InfoContest() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
                 <div className="container">
-                    <a className="navbar-brand" href="#">ConcoursPhoto.com</a>
+                    <a className="navbar-brand" href="/">ConcoursPhoto.com</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@ function InfoContest() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link active" aria-current="page" href="#">Accueil</a>
+                                <a className="nav-link active" aria-current="page" href="/">Accueil</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Concours photo</a>
