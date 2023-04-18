@@ -27,8 +27,29 @@
     padding: 15px 15px 15px 15px;
 }
 
+.more-pictures {
+    background-color: #a8a8a8!important;
+}
+
+.blocs-infos-photos {
+    display: flex;
+    padding-top: 50px;
+}
+
+.footer-infos {
+    padding-top: 50px;
+}
+
+.photos {
+    width: 100%!important;
+}
+
 .infos-concours-section {
     margin-bottom: 50px;
+}
+
+.last-photos {
+    margin-bottom: 25px;
 }
 
 .name-jury {
