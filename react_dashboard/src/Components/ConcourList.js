@@ -13,7 +13,7 @@ function ConcourList() {
     }, []);
 
     function getConcourList() {
-        axios.get('http://localhost:8000/api/concours')
+        axios.get('http://localhost:8000/api/contests')
             .then(response => {
                 setConcourList(response.data['hydra:member'])
             })
@@ -29,7 +29,7 @@ function ConcourList() {
                     return (
                         <div key={concour.id} className='offset-lg-4 col-lg-7 d-flex mb-3'>
                             <h2 className='me-5'>{concour.id}</h2>
-                            <h3>{concour.name}</h3>
+                            <h3>{concour.name_concours}</h3>
                             <button type='button' className='btn btn-primary m-auto' onClick={() => { navigate('/concoursForm', {state: {id: concour.id}}) }}>Modifier</button>
                         </div>
                     )

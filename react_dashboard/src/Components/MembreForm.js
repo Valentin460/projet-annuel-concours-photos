@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from 'react';
+import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function MembreForm() {
 
@@ -16,6 +18,36 @@ function MembreForm() {
         website:'',
         socialNetwork:'',
     })
+
+    const location = useLocation();
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        if (location.state.id !== 'undefined') {
+            axios.get('http://localhost:8000/api/members/' + location.state.id)
+                .then(response => {
+                    setMembre(response.data)
+                })
+        }
+    }, []);
+
+    function handleSubmit() {
+        if (location.state.id !== 'undefined') {
+            axios.put('http://localhost:8000/api/members/' + location.state.id, membre)
+                .then(response => {
+                    navigate('/membreList')
+                })
+        } else {
+            // setUser({...user, date_creation: Date()})
+            axios.post('http://localhost:8000/api/members', membre)
+                .then(response => {
+                    navigate('/membreList')
+                })
+        }
+
+    }
+
     return (
         <div className="container">
             <h2>Gestion d'un membre</h2>
@@ -56,12 +88,10 @@ function MembreForm() {
                     <label htmlFor="reseaux_sociaux">Réseaux sociaux</label>
                     <input className="form-control" type={"text"} name="reseaux_sociaux" value={membre.reseaux_sociaux} onChange={(event) => setMembre(event.target.value)}/>
                 </div>
-                <button type='button' className='btn btn-primary col-4 col-lg-2'>Enregistrer</button>
+                <button type='button' className='btn btn-primary col-4 col-lg-2' onClick={() => handleSubmit()}>Enregistrer</button>
             </form>
         </div>
     );
 }
-
-MembreForm.propTypes = {};
 
 export default MembreForm;

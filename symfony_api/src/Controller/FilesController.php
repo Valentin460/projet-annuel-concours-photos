@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Photo;
+use App\Entity\Files;
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,12 +36,12 @@ class FilesController extends AbstractController
                     $e;
             }
 
-            $newfile = new Photo();
-            $newfile->setNamePhoto($filename);
-            // $newfile->setExtension('png');
-            // $newfile->setPath('uploads/files/'.$filename);
+            $newfile = new Files();
+            $newfile->setName($filename);
+            $newfile->setExtension('png');
+            $newfile->setPath('uploads/files/'.$filename);
             // $newfile->setCreatedBy($user);
-            // $newfile->setCreatedAt(new DateTimeImmutable());
+            $newfile->setCreatedAt(new DateTime());
 
             $entityManager->persist($newfile);
             $entityManager->flush();

@@ -91,7 +91,7 @@ class Contests
     #[ORM\ManyToMany(targetEntity: Criteria::class, mappedBy: 'contests')]
     private Collection $criteria;
 
-    #[ORM\OneToMany(mappedBy: 'organization', targetEntity: ContestsOrganizations::class)]
+    #[ORM\OneToMany(mappedBy: 'organizations', targetEntity: ContestsOrganizations::class)]
     private Collection $contestsOrganizations;
 
     #[ORM\OneToMany(mappedBy: 'contests', targetEntity: MembersContests::class)]
@@ -100,7 +100,7 @@ class Contests
     #[ORM\OneToMany(mappedBy: 'members', targetEntity: MembersContestsWin::class)]
     private Collection $membersContestsWin;
 
-    #[ORM\OneToMany(mappedBy: 'Contest', targetEntity: Files::class)]
+    #[ORM\OneToMany(mappedBy: 'contests', targetEntity: Files::class)]
     private Collection $files;
 
     public function __construct()

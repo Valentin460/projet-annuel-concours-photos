@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'
-import moment from 'moment'
+
 
 function UserForm() {
 
@@ -41,7 +41,6 @@ function UserForm() {
 
 
     useEffect(() => {
-        // setUser({...user, date_creation: moment().format()})
         if (user.email !== newEmail && currentEmail !== user.email) {
             setEmailChange(true)
         } else {
@@ -162,7 +161,7 @@ function UserForm() {
                     <input name='phoneNumber' value={user.telMobile} className='form-control' onChange={(event) => setUser({ ...user, telMobile: event.target.value })} />
                 </div>
                 <button type='button' className='btn btn-primary offset-lg-5 col-lg-2' onClick={() => handleSubmit()}>Enregister</button>
-                <button type='button' className='btn btn-warning offset-lg-5 col-lg-2' onClick={() => console.log(user.date_creation)}>log</button>
+                <button type='button' className='btn btn-warning offset-lg-5 col-lg-2' onClick={() => console.log(user.dateCreation)}>log</button>
             </form>
         </div>
     );

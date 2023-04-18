@@ -13,7 +13,7 @@ function MembreList() {
     }, []);
 
     function getMembreList() {
-        axios.get('http://localhost:8000/api/membres')
+        axios.get('http://localhost:8000/api/members')
             .then(response => {
                 setMembreList(response.data['hydra:member'])
             })

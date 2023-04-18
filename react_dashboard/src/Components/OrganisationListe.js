@@ -13,7 +13,7 @@ function OrganisationList() {
     }, []);
 
     function getOrganisationList() {
-        axios.get('http://localhost:8000/api/organisations')
+        axios.get('http://localhost:8000/api/organizations')
             .then(response => {
                 setOrganisationList(response.data['hydra:member'])
             })
