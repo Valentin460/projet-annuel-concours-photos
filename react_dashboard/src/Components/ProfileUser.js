@@ -190,6 +190,8 @@ function ProfileUser() {
                                 <label htmlFor='lastName'>Mot de passe*</label>
                                 <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                             </div>
+                            <br/>
+                            <p className="card-text concours-unique-infos back bg-dark text-white">Mettre à jour</p>
                         </div>
                         <div className="tab-pane fade infos-concours-section" id="reglement" role="tabpanel"
                              aria-labelledby="reglement-tab">
@@ -361,6 +363,7 @@ function ProfileUser() {
                                     <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                                 </div>
                             </div>
+                            <p className="card-text concours-unique-infos back bg-dark text-white">Mettre à jour</p>
                         </div>
                         <div className="tab-pane fade infos-concours-section" id="members" role="tabpanel"
                              aria-labelledby="members-tab">
@@ -511,6 +514,14 @@ function ProfileUser() {
                     </div>
                 </div>
             </div>
+            <footer className="footer-homepage">
+                <p className="link-footer"><b>ConcoursPhotos.com</b> @ Tous droits réservés</p>
+                <p className="link-footer">A propos</p>
+                <p className="link-footer">Mentions légales</p>
+                <p className="link-footer">Données personnelles</p>
+                <p className="link-footer">Annoncer sur ce site</p>
+                <p className="link-footer">Nous contacter</p>
+            </footer>
         </div>
     </div>
     );
