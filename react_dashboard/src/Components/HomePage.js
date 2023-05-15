@@ -5,6 +5,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 function HomePage() {
     const [homePageConcours, setHomePageConcours] = useState([])
     const navigate = useNavigate();
+    const location = useLocation();
     const [user, setUser] = useState({
         email: '',
         password: '',
@@ -18,6 +19,22 @@ function HomePage() {
         country:'',
         tel_mobile:'',
     })
+
+    function handleSubmit() {
+        if (location.state.id !== 'undefined') {
+            axios.put('http://localhost:8000/api/users/' + location.state.id, user)
+                .then(response => {
+                    navigate('/membreList')
+                })
+        } else {
+            // setUser({...user, date_creation: Date()})
+            axios.post('http://localhost:8000/api/users', user)
+                .then(response => {
+                    navigate('/profileUser')
+                })
+        }
+
+    }
 
     useEffect(() => {
         getHomePageConcours()
@@ -133,11 +150,11 @@ function HomePage() {
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Prénom*</label>
-                                                        <input name='firstName' value="" className='form-control'/>
+                                                        <input className='form-control' type={"text"} name="first_name" value={user.first_name} onChange={event => setUser(event.target.value)}/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Nom*</label>
-                                                        <input type="text" name='lastName' value="" className='form-control'/>
+                                                        <input type={"text"} name="name" value={user.name} onChange={event => setUser(event.target.value)} className='form-control'/>
                                                     </div>
                                                     <div className="form-group col-md-6 status">
                                                         <label htmlFor="inputState">Vous êtes*</label>
@@ -148,19 +165,19 @@ function HomePage() {
                                                     </div>
                                                     <div className='form-group col-md-6'>
                                                         <label htmlFor='lastName'>Date de naissance*</label>
-                                                        <input type="date" name='dateBorn' value="" className='form-control'/>
+                                                        <input type={"date"} name="date_born" value={user.date_born} onChange={event => setUser(event.target.value)} className='form-control'/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Pays*</label>
-                                                        <input type="text" name='country' value="" className='form-control'/>
+                                                        <input type={"text"} name="country" value={user.country} onChange={event => setUser(event.target.value)} className='form-control'/>
                                                     </div>
                                                     <div className="form-group col-md-6 status">
                                                         <label htmlFor='lastName'>Ville*</label>
-                                                        <input type="text" name='city' value="" className='form-control'/>
+                                                        <input type={"text"} name="city" value={user.city} onChange={event => setUser(event.target.value)} className='form-control'/>
                                                     </div>
                                                     <div className='form-group col-md-6'>
                                                         <label htmlFor='lastName'>Code postal*</label>
-                                                        <input type="text" name='postalCode' value="" className='form-control'/>
+                                                        <input type={"text"} name="cp" value={user.cp} onChange={event => setUser(event.target.value)} className='form-control'/>
                                                     </div>
                                                     <div className="d-flex flex-column">
                                                         <label htmlFor="inputStatus">Statut</label>
@@ -183,7 +200,7 @@ function HomePage() {
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Tel</label>
-                                                        <input type="text" name='phone' value="" className='form-control'/>
+                                                        <input type={"text"} name="tel_mobile" value={user.tel_mobile} onChange={event => setUser(event.target.value)} className='form-control'/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Photo</label>
@@ -216,7 +233,7 @@ function HomePage() {
                                                         </div>
                                                     </div>
                                                     <div className="text-center">
-                                                        <button type="submit" className="btn btn-dark">Créer mon compte</button>
+                                                        <button type="button" className="btn btn-dark" onClick={() => handleSubmit()}>Créer mon compte</button>
                                                         <p>Vous avez un compte ? <a href="" className="text-dark">Connectez-vous</a></p>
                                                     </div>
                                                 </div>
