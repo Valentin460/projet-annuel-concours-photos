@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function HomePage() {
     const [homePageConcours, setHomePageConcours] = useState([])
     const navigate = useNavigate();
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+        genre:'',
+        first_name:'',
+        name:'',
+        date_born:'',
+        adresse:'',
+        cp:'',
+        city:'',
+        country:'',
+        tel_mobile:'',
+    })
 
     useEffect(() => {
         getHomePageConcours()
@@ -14,6 +27,30 @@ function HomePage() {
         axios.get('http://localhost:8000/api/contests')
             .then(response => {
                 setHomePageConcours(response.data['hydra:member'])
+            })
+    }
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const setAuthToken = token => {
+        if (token) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
+        else
+            delete axios.defaults.headers.common["Authorization"];
+    }
+
+    function getConnection() {
+        axios.post('http://localhost:8000/api/login', { username, password })
+            .then(response => {
+                const jwt = response.data.token;
+                if (jwt) {
+                    localStorage.setItem('jwt', jwt);
+                    setAuthToken(jwt);
+                    navigate('/profileUser')
+
+                }
             })
     }
     return (
@@ -210,15 +247,15 @@ function HomePage() {
                                                     <p>Si vous n'avez pas de compte, <a href="" className="text-dark">inscrivez-vous</a> c'est gratuit.</p>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Email*</label>
-                                                        <input type="text" name='email' value="" className='form-control'/>
+                                                        <input name='username' className='form-control' type={'email'} value={username} onChange={(event) => setUsername(event.target.value)} />
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Mot de passe*</label>
-                                                        <input type="text" name='firstName' value="" className='form-control'/>
+                                                        <input name='password' className='form-control' type={'password'} value={password} onChange={(event) => setPassword(event.target.value)} />
                                                     </div>
                                                 </div>
                                                 <div className="text-center">
-                                                    <button type="submit" className="btn btn-dark">Se connecter</button>
+                                                    <button type='button' onClick={() => getConnection()} className="btn btn-dark">Se connecter</button>
                                                     <p>Vous avez oublié votre mot de passe ? <a href="" className="text-dark">Cliquez-ici</a></p>
                                                 </div>
                                             </div>
