@@ -473,9 +473,9 @@ function ProfileUser() {
                                     <table className="table">
                                         <thead>
                                         <tr className="bg-light">
-                                            <th scope="col">Nom du concours</th>
-                                            <th scope="col">Date de début du concours</th>
-                                            <th scope="col">Date de fin du concours</th>
+                                            <th scope="col">Nom de l'emplacement de la publicité</th>
+                                            <th scope="col">Date de début de l'affichage</th>
+                                            <th scope="col">Date de fin de l'affichage</th>
                                             <th scope="col">Statut</th>
                                             <th scope="col">Affichages</th>
                                             <th scope="col">Clics</th>
