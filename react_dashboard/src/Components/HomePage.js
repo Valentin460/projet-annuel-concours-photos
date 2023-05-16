@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-    const [homePageConcours, setHomePageConcours] = useState([])
+    const [contestsList, setContestsList] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -13,7 +13,7 @@ function HomePage() {
     function getHomePageConcours() {
         axios.get('http://localhost:8000/api/contests')
             .then(response => {
-                setHomePageConcours(response.data['hydra:member'])
+                setContestsList(response.data['hydra:member'])
             })
     }
     return (
@@ -120,7 +120,7 @@ function HomePage() {
                     <h3 className="last-photos">Derniers concours photo publiés</h3>
                 </div>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
-                    {homePageConcours.map(concour => {
+                    {contestsList.map(concour => {
                         return (
                             <div className="col" key={concour.id}>
                                 <a onClick={() => { navigate('/InfoContest', {state: {id: concour.id}}) }}><div className="card">
@@ -129,7 +129,7 @@ function HomePage() {
                                         <h5 className="card-title">{concour.id} {concour.name_contests}</h5>
                                         <p className="card-text concours-infos">{concour.name_organisation}</p>
                                         <p className="card-text concours-infos">Nature</p>
-                                        <p className="card-text concours-infos">{concour.status}</p>
+                                        <p className="card-text concours-infos">{concour.state}</p>
                                         <br/><br/>
                                         <p className="card-text concours-infos">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -195,7 +195,5 @@ function HomePage() {
         </div>
     );
 }
-
-HomePage.propTypes = {};
 
 export default HomePage;

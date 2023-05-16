@@ -108,6 +108,4 @@ function OrganisationForm() {
     );
 }
 
-OrganisationForm.propTypes = {};
-
 export default OrganisationForm;

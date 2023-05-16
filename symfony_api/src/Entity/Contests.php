@@ -10,7 +10,16 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContestsRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    collectionOperations: [
+        'post', 'get', 
+        'Contest_members' => [
+            'method' => 'post',
+            'path' => '/contest/members',
+            'controller' => ContestController::class,
+        ]
+    ]
+)]
 class Contests
 {
     #[ORM\Id]
@@ -105,7 +114,7 @@ class Contests
 
     public function __construct()
     {
-        $this->organizations_publish = new ArrayCollection();
+        // $this->organizations_publish = new ArrayCollection();
         $this->pictures = new ArrayCollection();
         $this->themes = new ArrayCollection();
         $this->category_participant = new ArrayCollection();

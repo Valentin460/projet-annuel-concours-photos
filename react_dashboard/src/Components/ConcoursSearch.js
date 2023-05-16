@@ -255,6 +255,4 @@ function ConcoursSearch() {
     );
 }
 
-ConcoursSearch.propTypes = {};
-
 export default ConcoursSearch;

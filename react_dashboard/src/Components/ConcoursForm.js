@@ -112,6 +112,4 @@ function ConcoursForm() {
     );
 }
 
-ConcoursForm.propTypes = {};
-
 export default ConcoursForm;
