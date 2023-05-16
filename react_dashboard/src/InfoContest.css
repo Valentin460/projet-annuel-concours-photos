@@ -1,8 +1,14 @@
-.picture-concours {
-    width: 33%;
-    float: left;
-    padding-right: 5px;
-    margin-left: 5px;
+.back {
+    padding: 15px 15px 15px 15px!important;
+}
+
+.bloc-status-contest {
+    margin-top: 15px!important;
+}
+
+.blocs-infos-photos {
+    display: flex;
+    padding-top: 50px;
 }
 
 .carrousel-ads {
@@ -23,23 +29,54 @@
     display: initial;
 }
 
-.back {
-    padding: 15px 15px 15px 15px;
+.infos-concours-section {
+    margin-bottom: 50px;
 }
 
-.infos-concours-section {
+.footer-infos {
+    padding-top: 50px;
+}
+
+.last-photos {
+    margin-bottom: 25px;
+}
+
+.more-pictures {
+    background-color: #a8a8a8!important;
+}
+
+.navigate-infos-concours {
     margin-bottom: 50px;
 }
 
 .name-jury {
     background-color: #f1f1f1;
-    margin-right: 35%;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.navigate-infos-concours {
-    margin-bottom: 50px;
+.name-organizations {
+    text-decoration: underline;
+}
+
+.picture-concours {
+    width: 33%;
+    float: left;
+    padding-right: 5px;
+    margin-left: 5px;
+}
+
+.photos {
+    width: 100%!important;
+}
+
+.sections-contests {
+    color: #000000!important;
+}
+
+.status-concours {
+    background-color: #000000;
+    color: #FFFFFF;
 }
 
 @media (max-width: 1072px) {

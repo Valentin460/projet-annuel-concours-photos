@@ -20,6 +20,7 @@ import MembreList from './Components/MembreListe';
 import HomePage from './Components/HomePage';
 import ConcoursSearch from "./Components/ConcoursSearch";
 import InfoContest from "./Components/InfoContest";
+import ProfileUser from "./Components/ProfileUser";
 
 export const setAuthToken = token => {
   if (token) {
@@ -51,6 +52,7 @@ function App() {
       <Route path='/infoContest' element={<InfoContest/>}></Route>
       <Route path='/membreList' element={<MembreList/>}></Route>
       <Route path='/membreForm' element={<MembreForm/>}></Route>
+      <Route path='/profileUser' element={<ProfileUser/>}></Route>
     </Routes>
   );
 }

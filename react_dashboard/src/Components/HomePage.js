@@ -1,10 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function HomePage() {
     const [contestsList, setContestsList] = useState([])
     const navigate = useNavigate();
+    const location = useLocation();
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+        genre:'',
+        first_name:'',
+        name:'',
+        date_born:'',
+        adresse:'',
+        cp:'',
+        city:'',
+        country:'',
+        tel_mobile:'',
+    })
+
+    function handleSubmit() {
+        if (location.state.id !== 'undefined') {
+            axios.put('http://localhost:8000/api/users/' + location.state.id, user)
+                .then(response => {
+                    navigate('/membreList')
+                })
+        } else {
+            // setUser({...user, date_creation: Date()})
+            axios.post('http://localhost:8000/api/users', user)
+                .then(response => {
+                    navigate('/profileUser')
+                })
+        }
+
+    }
 
     useEffect(() => {
         getHomePageConcours()
@@ -14,6 +44,30 @@ function HomePage() {
         axios.get('http://localhost:8000/api/contests')
             .then(response => {
                 setContestsList(response.data['hydra:member'])
+            })
+    }
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const setAuthToken = token => {
+        if (token) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
+        else
+            delete axios.defaults.headers.common["Authorization"];
+    }
+
+    function getConnection() {
+        axios.post('http://localhost:8000/api/login', { username, password })
+            .then(response => {
+                const jwt = response.data.token;
+                if (jwt) {
+                    localStorage.setItem('jwt', jwt);
+                    setAuthToken(jwt);
+                    navigate('/profileUser')
+
+                }
             })
     }
     return (
@@ -50,7 +104,7 @@ function HomePage() {
                         <div className="d-flex">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item nav-item-user">
-                                    <a className="nav-link" href="#">
+                                    <a className="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              className="bi bi-person-add" viewBox="0 0 16 16">
                                             <path
@@ -58,9 +112,137 @@ function HomePage() {
                                             <path
                                                 d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
                                         </svg> S'inscrire</a>
+                                    <div className="modal fade" id="exampleModal1" tabIndex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h1 className="modal-title fs-5" id="exampleModalLabel">Inscription</h1>
+                                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <b>Créez votre compte membre, c'est gratuit !</b>
+                                                    <p>Vous pourrez voter et participer en tant que photographe aux concours proposés. Si vous représentez une organisation et souhaitez publier un concours, créez d'abord votre compte.</p>
+                                                    <div className="form-check sex-member">
+                                                        <input className="form-check-input" type="radio"
+                                                               name="flexRadioDefault" id="flexRadioDefault1"/>
+                                                            <label className="form-check-label"
+                                                                   htmlFor="flexRadioDefault1">
+                                                                Homme
+                                                            </label>
+                                                    </div>
+                                                    <div className="form-check sex-member">
+                                                        <input className="form-check-input" type="radio"
+                                                               name="flexRadioDefault" id="flexRadioDefault1"/>
+                                                        <label className="form-check-label"
+                                                               htmlFor="flexRadioDefault1">
+                                                            Femme
+                                                        </label>
+                                                    </div>
+                                                    <div className="form-check sex-member">
+                                                        <input className="form-check-input" type="radio"
+                                                               name="flexRadioDefault" id="flexRadioDefault1"/>
+                                                        <label className="form-check-label"
+                                                               htmlFor="flexRadioDefault1">
+                                                            Non binaire
+                                                        </label>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Prénom*</label>
+                                                        <input className='form-control' type={"text"} name="first_name" value={user.first_name} onChange={event => setUser(event.target.value)}/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Nom*</label>
+                                                        <input type={"text"} name="name" value={user.name} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                    </div>
+                                                    <div className="form-group col-md-6 status">
+                                                        <label htmlFor="inputState">Vous êtes*</label>
+                                                        <select id="inputState" className="form-control">
+                                                            <option selected>Cliquez ici</option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className='form-group col-md-6'>
+                                                        <label htmlFor='lastName'>Date de naissance*</label>
+                                                        <input type={"date"} name="date_born" value={user.date_born} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Pays*</label>
+                                                        <input type={"text"} name="country" value={user.country} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                    </div>
+                                                    <div className="form-group col-md-6 status">
+                                                        <label htmlFor='lastName'>Ville*</label>
+                                                        <input type={"text"} name="city" value={user.city} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                    </div>
+                                                    <div className='form-group col-md-6'>
+                                                        <label htmlFor='lastName'>Code postal*</label>
+                                                        <input type={"text"} name="cp" value={user.cp} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                    </div>
+                                                    <div className="d-flex flex-column">
+                                                        <label htmlFor="inputStatus">Statut</label>
+                                                        <select id="inputStatus" className="form-control">
+                                                            <option selected>Cliquez ici</option>
+                                                            <option>Ecole/Formation</option>
+                                                            <option>En activité</option>
+                                                            <option>En recherche d'emploi</option>
+                                                            <option>A la retraite</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="d-flex flex-column">
+                                                        <label htmlFor="inputCategory">Catégorie</label>
+                                                        <select id="inputCategory" className="form-control">
+                                                            <option selected>Cliquez ici</option>
+                                                            <option>Photographe amateur</option>
+                                                            <option>Photographe confirmé</option>
+                                                            <option>Photographe professionnel</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Tel</label>
+                                                        <input type={"text"} name="tel_mobile" value={user.tel_mobile} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Photo</label>
+                                                        <input type="file" name='picture' value="" className='form-control'/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>URL du site</label>
+                                                        <input type="text" name='website' value="" className='form-control'/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>URL dus pages réseaux sociaux</label>
+                                                        <input type="text" name='socialMedia' value="" className='form-control'/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Email*</label>
+                                                        <input type="text" name='email' value="" className='form-control'/>
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Mot de passe*</label>
+                                                        <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
+                                                    </div>
+                                                    <br/>
+                                                    <div className="form-group">
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="checkbox"
+                                                                   id="gridCheck"/>
+                                                                <label className="form-check-label" htmlFor="gridCheck">
+                                                                    En cochant cette case, j'accepte les conditions générales d'utilisation ainsi que la politique d'utilisation de mes données personnelles.
+                                                                </label>
+                                                        </div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <button type="button" className="btn btn-dark" onClick={() => handleSubmit()}>Créer mon compte</button>
+                                                        <p>Vous avez un compte ? <a href="" className="text-dark">Connectez-vous</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li className="nav-item nav-item-user">
-                                    <a className="nav-link" href="#">
+                                    <a className="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              className="bi bi-person-dash" viewBox="0 0 16 16">
                                             <path
@@ -68,6 +250,34 @@ function HomePage() {
                                             <path
                                                 d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
                                         </svg> Se connecter</a>
+                                    <div className="modal fade" id="exampleModal2" tabIndex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h1 className="modal-title fs-5" id="exampleModalLabel">Connexion</h1>
+                                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <b>Veuillez vous identifier pour pouvoir voter et participer.</b>
+                                                    <p>Si vous n'avez pas de compte, <a href="" className="text-dark">inscrivez-vous</a> c'est gratuit.</p>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Email*</label>
+                                                        <input name='username' className='form-control' type={'email'} value={username} onChange={(event) => setUsername(event.target.value)} />
+                                                    </div>
+                                                    <div className='d-flex flex-column'>
+                                                        <label htmlFor='lastName'>Mot de passe*</label>
+                                                        <input name='password' className='form-control' type={'password'} value={password} onChange={(event) => setPassword(event.target.value)} />
+                                                    </div>
+                                                </div>
+                                                <div className="text-center">
+                                                    <button type='button' onClick={() => getConnection()} className="btn btn-dark">Se connecter</button>
+                                                    <p>Vous avez oublié votre mot de passe ? <a href="" className="text-dark">Cliquez-ici</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
