@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useLocation, useNavigate} from "react-router-dom";
+import moment from "moment";
 
 function HomePage() {
     const [contestsList, setContestsList] = useState([])
@@ -9,31 +10,26 @@ function HomePage() {
     const [user, setUser] = useState({
         email: '',
         password: '',
-        genre:'',
-        first_name:'',
+        genre: [],
+        firstName:'',
         name:'',
-        date_born:'',
+        dateBorn:'',
         adresse:'',
         cp:'',
         city:'',
         country:'',
-        tel_mobile:'',
+        telMobile:'',
+        file: '',
+        etat: false,
+        dateCreation: moment().format(),
     })
 
     function handleSubmit() {
-        if (location.state.id !== 'undefined') {
-            axios.put('http://localhost:8000/api/users/' + location.state.id, user)
-                .then(response => {
-                    navigate('/profileUser')
-                })
-        } else {
-            // setUser({...user, date_creation: Date()})
-            axios.post('http://localhost:8000/api/users', user)
-                .then(response => {
-                    navigate('/profileUser')
-                })
-        }
-
+        // setUser({...user, date_creation: Date()})
+        axios.post('http://localhost:8000/api/users', user)
+            .then(response => {
+                navigate('/profileUser')
+            })
     }
 
     useEffect(() => {
@@ -150,11 +146,11 @@ function HomePage() {
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Prénom*</label>
-                                                        <input className='form-control' type={"text"} name="first_name" value={user.first_name} onChange={event => setUser(event.target.value)}/>
+                                                        <input className='form-control' type={"text"} name="first_name" value={user.first_name} onChange={(event) => setUser({ ...user, firstName: event.target.value })}/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Nom*</label>
-                                                        <input type={"text"} name="name" value={user.name} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                        <input type={"text"} name="name" value={user.name} onChange={(event) => setUser({ ...user, name: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className="form-group col-md-6 status">
                                                         <label htmlFor="inputState">Vous êtes*</label>
@@ -165,24 +161,24 @@ function HomePage() {
                                                     </div>
                                                     <div className='form-group col-md-6'>
                                                         <label htmlFor='lastName'>Date de naissance*</label>
-                                                        <input type={"date"} name="date_born" value={user.date_born} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                        <input type={"date"} name="date_born" value={user.dateBorn} onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Pays*</label>
-                                                        <input type={"text"} name="country" value={user.country} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                        <input type={"text"} name="country" value={user.country} onChange={(event) => setUser({ ...user, country: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className="form-group col-md-6 status">
                                                         <label htmlFor='lastName'>Ville*</label>
-                                                        <input type={"text"} name="city" value={user.city} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                        <input type={"text"} name="city" value={user.city} onChange={(event) => setUser({ ...user, city: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className='form-group col-md-6'>
                                                         <label htmlFor='lastName'>Code postal*</label>
-                                                        <input type={"text"} name="cp" value={user.cp} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                        <input type={"text"} name="cp" value={user.cp} onChange={(event) => setUser({ ...user, cp: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className="d-flex flex-column">
                                                         <label htmlFor="inputStatus">Statut</label>
                                                         <select id="inputStatus" className="form-control">
-                                                            <option selected>Cliquez ici</option>
+                                                            <option>Cliquez ici</option>
                                                             <option>Ecole/Formation</option>
                                                             <option>En activité</option>
                                                             <option>En recherche d'emploi</option>
@@ -192,7 +188,7 @@ function HomePage() {
                                                     <div className="d-flex flex-column">
                                                         <label htmlFor="inputCategory">Catégorie</label>
                                                         <select id="inputCategory" className="form-control">
-                                                            <option selected>Cliquez ici</option>
+                                                            <option>Cliquez ici</option>
                                                             <option>Photographe amateur</option>
                                                             <option>Photographe confirmé</option>
                                                             <option>Photographe professionnel</option>
@@ -200,7 +196,7 @@ function HomePage() {
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Tel</label>
-                                                        <input type={"text"} name="tel_mobile" value={user.tel_mobile} onChange={event => setUser(event.target.value)} className='form-control'/>
+                                                        <input type={"text"} name="tel_mobile" value={user.telMobile} onChange={(event) => setUser({ ...user, telMobile: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Photo</label>
@@ -216,11 +212,11 @@ function HomePage() {
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Email*</label>
-                                                        <input type="text" name='email' value="" className='form-control'/>
+                                                        <input type="text" name='email' value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} className='form-control'/>
                                                     </div>
                                                     <div className='d-flex flex-column'>
                                                         <label htmlFor='lastName'>Mot de passe*</label>
-                                                        <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
+                                                        <input type="password" name='password' onChange={(event) => setUser({ ...user, password: event.target.value })} className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                                                     </div>
                                                     <br/>
                                                     <div className="form-group">
