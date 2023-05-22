@@ -1,8 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfileUser() {
+    const [profileUser, setContestsList] = useState([])
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [user, setProfileUser] = useState({
+        email: '',
+        password: '',
+        genre:'',
+        first_name:'',
+        name:'',
+        date_born:'',
+        adresse:'',
+        cp:'',
+        city:'',
+        country:'',
+        tel_mobile:'',
+    })
+
+    function handleSubmit() {
+        if (location.state.id !== 'undefined') {
+            axios.put('http://localhost:8000/api/users/' + location.state.id, user)
+                .then(response => {
+                    navigate('/profileUser')
+                })
+        } else {
+            // setUser({...user, date_creation: Date()})
+            axios.post('http://localhost:8000/api/users', user)
+                .then(response => {
+                    navigate('/profileUser')
+                })
+        }
+
+    }
+
+    useEffect(() => {
+        getProfileUser()
+    }, []);
+
+    function getProfileUser() {
+        axios.get('http://localhost:8000/api/users')
+            .then(response => {
+                setProfileUser(response.data['hydra:member'])
+            })
+    }
+
     return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
@@ -118,11 +162,11 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Prénom*</label>
-                                <input name='firstName' value="" className='form-control'/>
+                                <input className='form-control' type={"text"} name="first_name" value={user.first_name} onChange={event => setProfileUser(event.target.value)}/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Nom*</label>
-                                <input type="text" name='lastName' value="" className='form-control'/>
+                                <input type={"text"} name="name" value={user.name} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className="form-group col-md-6 status">
                                 <label htmlFor="inputState">Vous êtes*</label>
@@ -133,19 +177,19 @@ function ProfileUser() {
                             </div>
                             <div className='form-group col-md-6'>
                                 <label htmlFor='lastName'>Date de naissance*</label>
-                                <input type="date" name='dateBorn' value="" className='form-control'/>
+                                <input type={"date"} name="date_born" value={user.date_born} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Pays*</label>
-                                <input type="text" name='country' value="" className='form-control'/>
+                                <input type={"text"} name="country" value={user.country} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className="form-group col-md-6 status">
                                 <label htmlFor='lastName'>Ville*</label>
-                                <input type="text" name='city' value="" className='form-control'/>
+                                <input type={"text"} name="city" value={user.city} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='form-group col-md-6'>
                                 <label htmlFor='lastName'>Code postal*</label>
-                                <input type="text" name='postalCode' value="" className='form-control'/>
+                                <input type={"text"} name="cp" value={user.cp} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className="d-flex flex-column">
                                 <label htmlFor="inputStatus">Statut</label>
@@ -168,7 +212,7 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Tel</label>
-                                <input type="text" name='phone' value="" className='form-control'/>
+                                <input type={"text"} name="tel_mobile" value={user.tel_mobile} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Photo</label>
@@ -191,7 +235,7 @@ function ProfileUser() {
                                 <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                             </div>
                             <br/>
-                            <p className="card-text concours-unique-infos back bg-dark text-white">Mettre à jour</p>
+                            <p className="card-text concours-unique-infos back bg-dark text-white" onClick={() => handleSubmit()}>Mettre à jour</p>
                         </div>
                         <div className="tab-pane fade infos-concours-section" id="reglement" role="tabpanel"
                              aria-labelledby="reglement-tab">

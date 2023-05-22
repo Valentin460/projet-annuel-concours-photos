@@ -24,7 +24,7 @@ function HomePage() {
         if (location.state.id !== 'undefined') {
             axios.put('http://localhost:8000/api/users/' + location.state.id, user)
                 .then(response => {
-                    navigate('/membreList')
+                    navigate('/profileUser')
                 })
         } else {
             // setUser({...user, date_creation: Date()})
