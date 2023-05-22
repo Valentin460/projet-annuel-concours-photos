@@ -1,24 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfileUser() {
     const [profileUser, setContestsList] = useState([])
+    const [currentUser, setCurrentUser] = useState(null)
     const navigate = useNavigate();
     const location = useLocation();
-    const [user, setProfileUser] = useState({
+    const [user, setUser] = useState({
         email: '',
         password: '',
         genre:'',
-        first_name:'',
+        firstName:'',
         name:'',
-        date_born:'',
+        dateBorn:'',
         adresse:'',
         cp:'',
         city:'',
         country:'',
-        tel_mobile:'',
+        telMobile:'',
     })
+
+    function getCurrentUser() {
+       axios.get('http://localhost:8000/api/auth')
+            .then(response => {
+                setUser(response.data)
+            }).catch(err => {
+                if (err.response.status === 401) {
+                    console.log(err.response.status)
+               }
+            })
+    }
+
+
 
     function handleSubmit() {
         if (location.state.id !== 'undefined') {
@@ -37,15 +52,8 @@ function ProfileUser() {
     }
 
     useEffect(() => {
-        getProfileUser()
+        getCurrentUser()
     }, []);
-
-    function getProfileUser() {
-        axios.get('http://localhost:8000/api/users')
-            .then(response => {
-                setProfileUser(response.data['hydra:member'])
-            })
-    }
 
     return (
     <div>
@@ -162,39 +170,39 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Prénom*</label>
-                                <input className='form-control' type={"text"} name="first_name" value={user.first_name} onChange={event => setProfileUser(event.target.value)}/>
+                                <input className='form-control' type={"text"} name="first_name" value={user.firstName} onChange={event => setCurrentUser(event.target.value)}/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Nom*</label>
-                                <input type={"text"} name="name" value={user.name} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="name" value={user.name} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className="form-group col-md-6 status">
                                 <label htmlFor="inputState">Vous êtes*</label>
                                 <select id="inputState" className="form-control">
-                                    <option selected>Cliquez ici</option>
+                                    <option>Cliquez ici</option>
                                     <option>...</option>
                                 </select>
                             </div>
                             <div className='form-group col-md-6'>
                                 <label htmlFor='lastName'>Date de naissance*</label>
-                                <input type={"date"} name="date_born" value={user.date_born} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
+                                <input type={"date"} name="date_born" value={moment(user.dateBorn).format('YYYY-MM-DD')} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Pays*</label>
-                                <input type={"text"} name="country" value={user.country} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="country" value={user.country} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className="form-group col-md-6 status">
                                 <label htmlFor='lastName'>Ville*</label>
-                                <input type={"text"} name="city" value={user.city} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="city" value={user.city} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='form-group col-md-6'>
                                 <label htmlFor='lastName'>Code postal*</label>
-                                <input type={"text"} name="cp" value={user.cp} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="cp" value={user.cp} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className="d-flex flex-column">
                                 <label htmlFor="inputStatus">Statut</label>
                                 <select id="inputStatus" className="form-control">
-                                    <option selected>Cliquez ici</option>
+                                    <option>Cliquez ici</option>
                                     <option>Ecole/Formation</option>
                                     <option>En activité</option>
                                     <option>En recherche d'emploi</option>
@@ -204,7 +212,7 @@ function ProfileUser() {
                             <div className="d-flex flex-column">
                                 <label htmlFor="inputCategory">Catégorie</label>
                                 <select id="inputCategory" className="form-control">
-                                    <option selected>Cliquez ici</option>
+                                    <option>Cliquez ici</option>
                                     <option>Photographe amateur</option>
                                     <option>Photographe confirmé</option>
                                     <option>Photographe professionnel</option>
@@ -212,27 +220,27 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Tel</label>
-                                <input type={"text"} name="tel_mobile" value={user.tel_mobile} onChange={event => setProfileUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="tel_mobile" value={user.telMobile} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Photo</label>
-                                <input type="file" name='picture' value="" className='form-control'/>
+                                <input type="file" name='picture' className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>URL du site</label>
-                                <input type="text" name='website' value="" className='form-control'/>
+                                <input type="text" name='website' className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>URL dus pages réseaux sociaux</label>
-                                <input type="text" name='socialMedia' value="" className='form-control'/>
+                                <input type="text" name='socialMedia' className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Email*</label>
-                                <input type="text" name='email' value="" className='form-control'/>
+                                <input type="text" name='email' value={user.email} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Mot de passe*</label>
-                                <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
+                                <input type="password" name='password' onChange={event => setCurrentUser(event.target.value)} className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                             </div>
                             <br/>
                             <p className="card-text concours-unique-infos back bg-dark text-white" onClick={() => handleSubmit()}>Mettre à jour</p>
@@ -242,35 +250,35 @@ function ProfileUser() {
                             <br/><b>Si vous êtes simple membre</b><br/><br/>
                             <div className="bg-light">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé par email lorsqu'un nouveau concours est publié
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé par email lorsqu'un concours entre en phase de vote
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé par email 48h avant la date de fin des votes d'un concours
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé par email lorsque les résultats d'un concours sont publiés
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé par email lorsqu'une nouvel article/actualité est publiée dans le blog
@@ -280,21 +288,21 @@ function ProfileUser() {
                             <br/><b>Si vous êtes photographe</b><br/><br/>
                             <div className="bg-light">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé lorsqu'un nouveau concours est publié et que mon profil satisfait les critères de participation
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé lorsqu'un concours entre en phase de soumission
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value=""
+                                    <input className="form-check-input" type="checkbox"
                                            id="flexCheckIndeterminate"/>
                                     <label className="form-check-label" htmlFor="flexCheckIndeterminate">
                                         Être informé 48h avant la date de fin des soumissions d'un concours
@@ -334,39 +342,39 @@ function ProfileUser() {
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Prénom*</label>
-                                    <input name='firstName' value="" className='form-control'/>
+                                    <input name='firstName' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Nom*</label>
-                                    <input type="text" name='lastName' value="" className='form-control'/>
+                                    <input type="text" name='lastName' className='form-control'/>
                                 </div>
                                 <div className="form-group col-md-6 status">
                                     <label htmlFor="inputState">Vous êtes*</label>
                                     <select id="inputState" className="form-control">
-                                        <option selected>Cliquez ici</option>
+                                        <option>Cliquez ici</option>
                                         <option>...</option>
                                     </select>
                                 </div>
                                 <div className='form-group col-md-6'>
                                     <label htmlFor='lastName'>Date de naissance*</label>
-                                    <input type="date" name='dateBorn' value="" className='form-control'/>
+                                    <input type="date" name='dateBorn' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Pays*</label>
-                                    <input type="text" name='country' value="" className='form-control'/>
+                                    <input type="text" name='country' className='form-control'/>
                                 </div>
                                 <div className="form-group col-md-6 status">
                                     <label htmlFor='lastName'>Ville*</label>
-                                    <input type="text" name='city' value="" className='form-control'/>
+                                    <input type="text" name='city' className='form-control'/>
                                 </div>
                                 <div className='form-group col-md-6'>
                                     <label htmlFor='lastName'>Code postal*</label>
-                                    <input type="text" name='postalCode' value="" className='form-control'/>
+                                    <input type="text" name='postalCode' className='form-control'/>
                                 </div>
                                 <div className="d-flex flex-column">
                                     <label htmlFor="inputStatus">Statut</label>
                                     <select id="inputStatus" className="form-control">
-                                        <option selected>Cliquez ici</option>
+                                        <option>Cliquez ici</option>
                                         <option>Ecole/Formation</option>
                                         <option>En activité</option>
                                         <option>En recherche d'emploi</option>
@@ -376,7 +384,7 @@ function ProfileUser() {
                                 <div className="d-flex flex-column">
                                     <label htmlFor="inputCategory">Catégorie</label>
                                     <select id="inputCategory" className="form-control">
-                                        <option selected>Cliquez ici</option>
+                                        <option>Cliquez ici</option>
                                         <option>Photographe amateur</option>
                                         <option>Photographe confirmé</option>
                                         <option>Photographe professionnel</option>
@@ -384,27 +392,27 @@ function ProfileUser() {
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Tel</label>
-                                    <input type="text" name='phone' value="" className='form-control'/>
+                                    <input type="text" name='phone' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Photo</label>
-                                    <input type="file" name='picture' value="" className='form-control'/>
+                                    <input type="file" name='picture' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>URL du site</label>
-                                    <input type="text" name='website' value="" className='form-control'/>
+                                    <input type="text" name='website' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>URL dus pages réseaux sociaux</label>
-                                    <input type="text" name='socialMedia' value="" className='form-control'/>
+                                    <input type="text" name='socialMedia' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Email*</label>
-                                    <input type="text" name='email' value="" className='form-control'/>
+                                    <input type="text" name='email' className='form-control'/>
                                 </div>
                                 <div className='d-flex flex-column'>
                                     <label htmlFor='lastName'>Mot de passe*</label>
-                                    <input type="text" name='firstName' value="" className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
+                                    <input type="text" name='firstName' className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                                 </div>
                             </div>
                             <p className="card-text concours-unique-infos back bg-dark text-white">Mettre à jour</p>
