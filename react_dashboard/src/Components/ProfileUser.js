@@ -5,10 +5,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfileUser() {
     const [profileUser, setContestsList] = useState([])
-    const [currentUser, setCurrentUser] = useState(null)
     const navigate = useNavigate();
     const location = useLocation();
     const [user, setUser] = useState({
+        id: '',
         email: '',
         password: '',
         genre:'',
@@ -33,22 +33,16 @@ function ProfileUser() {
             })
     }
 
-
+    function logoutUser() {
+        localStorage.clear();
+        navigate("/");
+    }
 
     function handleSubmit() {
-        if (location.state.id !== 'undefined') {
-            axios.put('http://localhost:8000/api/users/' + location.state.id, user)
+            axios.put('http://localhost:8000/api/users/' + user.id, user)
                 .then(response => {
                     navigate('/profileUser')
                 })
-        } else {
-            // setUser({...user, date_creation: Date()})
-            axios.post('http://localhost:8000/api/users', user)
-                .then(response => {
-                    navigate('/profileUser')
-                })
-        }
-
     }
 
     useEffect(() => {
@@ -98,6 +92,17 @@ function ProfileUser() {
                                             d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
                                     </svg>
                                     Mon profil</a>
+                            </li>
+                            <li className="nav-item nav-item-user">
+                                <a className="nav-link" onClick={() => logoutUser()} data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         className="bi bi-person-dash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                                        <path
+                                            d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                                    </svg>
+                                    Déconnexion</a>
                             </li>
                         </ul>
                     </div>
@@ -170,11 +175,11 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Prénom*</label>
-                                <input className='form-control' type={"text"} name="first_name" value={user.firstName} onChange={event => setCurrentUser(event.target.value)}/>
+                                <input className='form-control' type={"text"} name="first_name" value={user.firstName} onChange={(event) => setUser({ ...user, firstName: event.target.value })}/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Nom*</label>
-                                <input type={"text"} name="name" value={user.name} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="name" value={user.name} onChange={(event) => setUser({ ...user, name: event.target.value })} className='form-control'/>
                             </div>
                             <div className="form-group col-md-6 status">
                                 <label htmlFor="inputState">Vous êtes*</label>
@@ -185,19 +190,19 @@ function ProfileUser() {
                             </div>
                             <div className='form-group col-md-6'>
                                 <label htmlFor='lastName'>Date de naissance*</label>
-                                <input type={"date"} name="date_born" value={moment(user.dateBorn).format('YYYY-MM-DD')} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type={"date"} name="date_born" value={moment(user.dateBorn).format('YYYY-MM-DD')} onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Pays*</label>
-                                <input type={"text"} name="country" value={user.country} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="country" value={user.country} onChange={(event) => setUser({ ...user, country: event.target.value })} className='form-control'/>
                             </div>
                             <div className="form-group col-md-6 status">
                                 <label htmlFor='lastName'>Ville*</label>
-                                <input type={"text"} name="city" value={user.city} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="city" value={user.city} onChange={(event) => setUser({ ...user, city: event.target.value })} className='form-control'/>
                             </div>
                             <div className='form-group col-md-6'>
                                 <label htmlFor='lastName'>Code postal*</label>
-                                <input type={"text"} name="cp" value={user.cp} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="cp" value={user.cp} onChange={(event) => setUser({ ...user, cp: event.target.value })} className='form-control'/>
                             </div>
                             <div className="d-flex flex-column">
                                 <label htmlFor="inputStatus">Statut</label>
@@ -220,7 +225,7 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Tel</label>
-                                <input type={"text"} name="tel_mobile" value={user.telMobile} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type={"text"} name="tel_mobile" value={user.telMobile} onChange={(event) => setUser({ ...user, telMobile: event.target.value })} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Photo</label>
@@ -236,11 +241,11 @@ function ProfileUser() {
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Email*</label>
-                                <input type="text" name='email' value={user.email} onChange={event => setCurrentUser(event.target.value)} className='form-control'/>
+                                <input type="text" name='email' value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} className='form-control'/>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label htmlFor='lastName'>Mot de passe*</label>
-                                <input type="password" name='password' onChange={event => setCurrentUser(event.target.value)} className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
+                                <input type="password" name='password' onChange={event => setUser(event.target.value)} className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
                             </div>
                             <br/>
                             <p className="card-text concours-unique-infos back bg-dark text-white" onClick={() => handleSubmit()}>Mettre à jour</p>
