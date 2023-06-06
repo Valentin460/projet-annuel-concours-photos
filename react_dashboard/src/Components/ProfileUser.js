@@ -140,11 +140,6 @@ function ProfileUser() {
                                     type="button" role="tab" aria-controls="pictures" aria-selected="false">Concours auquel j'ai participé
                             </button>
                         </li>
-                        <li className="nav-item" role="presentation">
-                            <button className="nav-link sections-contests" id="results-tab" data-bs-toggle="tab" data-bs-target="#results"
-                                    type="button" role="tab" aria-controls="results" aria-selected="false">Mes publicités
-                            </button>
-                        </li>
                     </ul>
                     <div className="tab-content container navigate-infos-concours" id="myTabContent">
                         <div className="tab-pane fade show active infos-concours-section" id="concours" role="tabpanel"
@@ -510,53 +505,6 @@ function ProfileUser() {
                                         </tr>
                                         <tr>
                                             <td>Concours photo pour le site web</td>
-                                            <td>10/04/2023</td>
-                                            <td>10/05/2023</td>
-                                            <td>/</td>
-                                            <td>/</td>
-                                            <td>/</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="tab-pane infos-concours-section" id="results" role="tabpanel"
-                             aria-labelledby="results-tab">
-                            <div className="tab-pane infos-concours-section" id="members" role="tabpanel"
-                                 aria-labelledby="members-tab">
-                                <div className="container py-5">
-                                    <b>4 concours</b>
-                                    <table className="table">
-                                        <thead>
-                                        <tr className="bg-light">
-                                            <th scope="col">Nom de l'emplacement de la publicité</th>
-                                            <th scope="col">Date de début de l'affichage</th>
-                                            <th scope="col">Date de fin de l'affichage</th>
-                                            <th scope="col">Statut</th>
-                                            <th scope="col">Affichages</th>
-                                            <th scope="col">Clics</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Accueil : pub home header 1</td>
-                                            <td>01/01/2023</td>
-                                            <td>31/01/2023</td>
-                                            <td>/</td>
-                                            <td>2541</td>
-                                            <td>125</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Concours photo du patrimoine historique</td>
-                                            <td>01/03/2023</td>
-                                            <td>31/03/2023</td>
-                                            <td>/</td>
-                                            <td>869</td>
-                                            <td>74</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Footer</td>
                                             <td>10/04/2023</td>
                                             <td>10/05/2023</td>
                                             <td>/</td>

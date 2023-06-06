@@ -68,10 +68,10 @@ function InfoContest() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link active" aria-current="page" href="/">Accueil</a>
+                                <a className="nav-link active" aria-current="page" onClick={() => { navigate('/') }}>Accueil</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" href="#">Concours photo</a>
+                                <a className="nav-link" onClick={() => { navigate('concoursSearch') }}>Concours photo</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Photographes</a>
