@@ -1,8 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
 import {useLocation, useNavigate} from "react-router-dom";
 
 function InfoContest() {
+
+        const editorRef = useRef(null);
+        const log = () => {
+            if (editorRef.current) {
+                console.log(editorRef.current.getContent());
+            }
+        };
 
     const [infoContest, setInfoContest] = useState({
         etat: true,
@@ -235,7 +243,173 @@ function InfoContest() {
             </ul>
             <div className="tab-content container navigate-infos-concours" id="myTabContent">
                 <div className="tab-pane fade show active infos-concours-section" id="concours" role="tabpanel" aria-labelledby="concours-tab">
-                    <h3>Présentation du concours photo</h3>
+                    <h3 className="modal-edit">Présentation du concours photo</h3>
+                    <p className="card-text concours-unique-infos concours-unique-infos-edit back"><a className="concours-unique-infos-edit" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             className="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fillRule="evenodd"
+                                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg> EDITER</a></p>
+                    <div className="modal fade" id="exampleModal3" tabIndex="-1"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-lg">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5" id="exampleModalLabel">Concours > onglet "présentation" : édition</h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+
+                                    <div className="row">
+                                        <div className="col-lg-8">
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='lastName'>Nom du concours*</label>
+                                                <input name='username' className='form-control' type={'text'} />
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Theme">Thème du concours*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Nature</option>
+                                                    </select>
+                                                </div>
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Categorie">Catégorie*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Ouvert à tous</option>
+                                                    </select>
+                                                </div>
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Dotation">Dotation*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Cadeaux</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Age-min">Âge minimum requis pour participer*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Nature</option>
+                                                    </select>
+                                                </div>
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Age-max">Âge maximum requis pour participer*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Ouvert à tous</option>
+                                                    </select>
+                                                </div>
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Prix">Nombre de prix*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Cadeaux</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Pays">Pays*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Nature</option>
+                                                    </select>
+                                                </div>
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Région">Région*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Ouvert à tous</option>
+                                                    </select>
+                                                </div>
+                                                <div className="col-lg-4">
+                                                    <label htmlFor="Départements">Départements*</label>
+                                                    <select className="form-select" aria-label="Default select">
+                                                        <option selected>Cadeaux</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <label htmlFor="Présentation">Présentation du concours</label>
+                                                <div className="col-lg-10-">
+                                                    <>
+                                                        <Editor
+                                                            onInit={(evt, editor) => editorRef.current = editor}
+                                                            apiKey='pp8qzvseu0ma5pm9e26o3e5n1hlphuvcel0k0ira0839if31'
+                                                            init={{
+                                                                height: 500,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image charmap print preview anchor',
+                                                                    'searchreplace visualblocks code fullscreen',
+                                                                    'insertdatetime media table paste code help wordcount'
+                                                                ],
+                                                                toolbar: 'undo redo | formatselect | ' +
+                                                                    'bold italic backcolor | alignleft aligncenter ' +
+                                                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                                    'removeformat | help',
+                                                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                                                            }}
+                                                        />
+                                                    </>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <div className="d-flex">
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                           id="flexRadioDefault1"/>
+                                                        <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                            Publié
+                                                        </label>
+                                                </div>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                           id="flexRadioDefault2"/>
+                                                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                            Caché
+                                                        </label>
+                                                </div>
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='activation'>Date d'activation*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='publication'>Date de publication*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='debut-soumission'>Date de début des soumissions*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='fin-soumission'>Date de fin des soumissions*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='debut-vote'>Date de début des votes*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='fin-vote'>Date de fin des votes*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='publication-resultat'>Date de publication des résultats*</label>
+                                                <input name='username' className='form-control' type={'date'} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div className="container">
+                                    <button type='button' className="btn btn-secondary save-contest">Annuler</button>
+                                    <button type='button' className="btn btn-dark save-contest">Sauvegarder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/><br/>
                     <p>{infoContest.description}</p>
                     <p>{infoContest.dateStartSoumission} {infoContest.dateEndSoumission}</p>
                 </div>

@@ -41,6 +41,23 @@
     margin-bottom: 25px;
 }
 
+.modal-edit {
+    float: left;
+    margin-right: 30px;
+}
+
+.concours-unique-infos-edit {
+    background-color: black;
+    color: white;
+    font-size: 8px;
+    text-decoration: none;
+}
+
+.concours-unique-infos-edit:hover {
+    text-decoration: none;
+    color: white;
+}
+
 .more-pictures {
     background-color: #a8a8a8!important;
 }
@@ -68,6 +85,10 @@
 
 .photos {
     width: 100%!important;
+}
+
+.save-contest {
+    margin-bottom: 20px;
 }
 
 .sections-contests {
