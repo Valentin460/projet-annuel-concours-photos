@@ -58,6 +58,14 @@
     color: white;
 }
 
+.form-input {
+    margin-bottom: 12px;
+}
+
+.margin-blocs {
+    margin-bottom: 50px;
+}
+
 .more-pictures {
     background-color: #a8a8a8!important;
 }

@@ -34,7 +34,7 @@ function ConcoursSearch() {
                                 <a className="nav-link active" aria-current="page" onClick={() => { navigate('/') }}>Accueil</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" onClick={() => { navigate('concoursSearch') }}>Concours photo</a>
+                                <a className="nav-link" href="#">Concours photo</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Photographes</a>
@@ -43,7 +43,7 @@ function ConcoursSearch() {
                                 <a className="nav-link" href="#">Organisateurs</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" href="#">Créez votre concours</a>
+                                <a className="nav-link" href="#" >Créez votre concours</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Blog</a>
