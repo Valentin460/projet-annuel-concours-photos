@@ -34,7 +34,7 @@ function ConcoursSearch() {
                                 <a className="nav-link active" aria-current="page" onClick={() => { navigate('/') }}>Accueil</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" href="#">Concours photo</a>
+                                <a className="nav-link" onClick={() => { navigate('concoursSearch') }}>Concours photo</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Photographes</a>
