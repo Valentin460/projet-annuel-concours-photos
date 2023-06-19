@@ -144,104 +144,156 @@ function ProfileUser() {
                     <div className="tab-content container navigate-infos-concours" id="myTabContent">
                         <div className="tab-pane fade show active infos-concours-section" id="concours" role="tabpanel"
                              aria-labelledby="concours-tab">
-                            <div className="form-check sex-member">
-                                <input className="form-check-input" type="radio"
-                                       name="flexRadioDefault" id="flexRadioDefault1"/>
-                                <label className="form-check-label"
-                                       htmlFor="flexRadioDefault1">
-                                    Homme
-                                </label>
+                            <div className="row">
+                                <div className="col-lg-6 margin-blocs">
+                                    <div className="d-flex form-input">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                   id="flexRadioDefault1"/>
+                                            <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                Homme&ensp;
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                   id="flexRadioDefault2"/>
+                                            <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                Femme&ensp;
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                   id="flexRadioDefault2"/>
+                                            <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                Non binaire
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div className='d-flex flex-column'>
+                                        <label htmlFor='lastName'>Prénom*</label>
+                                        <input className='form-control' type={"text"} name="first_name" value={user.firstName} onChange={(event) => setUser({ ...user, firstName: event.target.value })} />
+                                    </div>
+                                    <div className='d-flex flex-column'>
+                                        <label htmlFor='lastName'>Nom*</label>
+                                        <input className='form-control' name="name" value={user.name} onChange={(event) => setUser({ ...user, name: event.target.value })} />
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-lg-6">
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='lastName'>Date de naissance</label>
+                                                <input type={"date"} className='form-control' name="date_born" value={moment(user.dateBorn).format('YYYY-MM-DD')} onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <label htmlFor="Categorie">Vous êtes</label>
+                                            <select className="form-select" aria-label="Default select">
+                                                <option>Cliquez ici</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className='d-flex flex-column'>
+                                        <label htmlFor='lastName'>Email*</label>
+                                        <input name='email' value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} className='form-control' type={'email'} />
+                                    </div>
+                                    <div className='d-flex flex-column'>
+                                        <label htmlFor='lastName'>Mot de passe*</label>
+                                        <input type="password" name='password' onChange={event => setUser(event.target.value)} className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className='d-flex flex-column'>
+                                        <label htmlFor='lastName'>Adresse</label>
+                                        <input value={user.adresse} onChange={(event) => setUser({ ...user, adresse: event.target.value })} className='form-control' type={'text'} />
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-lg-6">
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='lastName'>Code postal</label>
+                                                <input type={"text"} className='form-control' value={user.cp} onChange={(event) => setUser({ ...user, cp: event.target.value })} />
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <label htmlFor="Categorie">Ville</label>
+                                            <input value={user.city} onChange={(event) => setUser({ ...user, city: event.target.value })} className='form-control' name="city"/>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-lg-6">
+                                            <div className='d-flex flex-column'>
+                                                <label htmlFor='lastName'>Pays</label>
+                                                <input value={user.country} onChange={(event) => setUser({ ...user, country: event.target.value })} className='form-control' name="country"/>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <label htmlFor="Categorie">Langue</label>
+                                            <select className="form-select" aria-label="Default select">
+                                                <option>Français</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className='d-flex flex-column'>
+                                        <label htmlFor='lastName'>Pseudo</label>
+                                        <input className='form-control' name="pseudo"/>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="form-check sex-member">
-                                <input className="form-check-input" type="radio"
-                                       name="flexRadioDefault" id="flexRadioDefault1"/>
-                                <label className="form-check-label"
-                                       htmlFor="flexRadioDefault1">
-                                    Femme
-                                </label>
+                            <b>Si vous êtes photographe</b>
+                            <div>
+                                <label htmlFor="bio">Bio / fiche de présentation dans l'annuaire des photographes (Si vous avez soumis au moins 1 photo à un concours)</label>
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Présentez vous brièvement : qui êtes-vous ? que faites-vous ? quelle est votre expérience, vos centres d'intérêts et vos spécialités en tant que photographe ?"></textarea>
+                                <div className="row">
+                                    <div className="col-lg-6">
+                                        <label htmlFor="Categorie">Votre catégorie en tant que photographe ?</label>
+                                        <select className="form-select" aria-label="Default select">
+                                            <option>Amateur</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-lg-6">
+                                        <div className='d-flex flex-column'>
+                                            <label htmlFor='lastName'>Votre site personnel</label>
+                                            <input className='form-control' name="country" placeholder="https//"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="form-check sex-member">
-                                <input className="form-check-input" type="radio"
-                                       name="flexRadioDefault" id="flexRadioDefault1"/>
-                                <label className="form-check-label"
-                                       htmlFor="flexRadioDefault1">
-                                    Non binaire
-                                </label>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Prénom*</label>
-                                <input className='form-control' type={"text"} name="first_name" value={user.firstName} onChange={(event) => setUser({ ...user, firstName: event.target.value })}/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Nom*</label>
-                                <input type={"text"} name="name" value={user.name} onChange={(event) => setUser({ ...user, name: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className="form-group col-md-6 status">
-                                <label htmlFor="inputState">Vous êtes*</label>
-                                <select id="inputState" className="form-control">
-                                    <option>Cliquez ici</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
-                            <div className='form-group col-md-6'>
-                                <label htmlFor='lastName'>Date de naissance*</label>
-                                <input type={"date"} name="date_born" value={moment(user.dateBorn).format('YYYY-MM-DD')} onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Pays*</label>
-                                <input type={"text"} name="country" value={user.country} onChange={(event) => setUser({ ...user, country: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className="form-group col-md-6 status">
-                                <label htmlFor='lastName'>Ville*</label>
-                                <input type={"text"} name="city" value={user.city} onChange={(event) => setUser({ ...user, city: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className='form-group col-md-6'>
-                                <label htmlFor='lastName'>Code postal*</label>
-                                <input type={"text"} name="cp" value={user.cp} onChange={(event) => setUser({ ...user, cp: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className="d-flex flex-column">
-                                <label htmlFor="inputStatus">Statut</label>
-                                <select id="inputStatus" className="form-control">
-                                    <option>Cliquez ici</option>
-                                    <option>Ecole/Formation</option>
-                                    <option>En activité</option>
-                                    <option>En recherche d'emploi</option>
-                                    <option>A la retraite</option>
-                                </select>
-                            </div>
-                            <div className="d-flex flex-column">
-                                <label htmlFor="inputCategory">Catégorie</label>
-                                <select id="inputCategory" className="form-control">
-                                    <option>Cliquez ici</option>
-                                    <option>Photographe amateur</option>
-                                    <option>Photographe confirmé</option>
-                                    <option>Photographe professionnel</option>
-                                </select>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Tel</label>
-                                <input type={"text"} name="tel_mobile" value={user.telMobile} onChange={(event) => setUser({ ...user, telMobile: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Photo</label>
-                                <input type="file" name='picture' className='form-control'/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>URL du site</label>
-                                <input type="text" name='website' className='form-control'/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>URL dus pages réseaux sociaux</label>
-                                <input type="text" name='socialMedia' className='form-control'/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Email*</label>
-                                <input type="text" name='email' value={user.email} onChange={(event) => setUser({ ...user, email: event.target.value })} className='form-control'/>
-                            </div>
-                            <div className='d-flex flex-column'>
-                                <label htmlFor='lastName'>Mot de passe*</label>
-                                <input type="password" name='password' onChange={event => setUser(event.target.value)} className='form-control' placeholder="8 caractères min dont 1 chiffre et 1 lettre majuscule"/>
-                            </div>
+                            <br/>
+                            <b>Vos réseaux sociaux</b>
+                                <div className="row">
+                                    <div className="col-lg-6">
+                                        <label htmlFor='lastName'>Votre page Facebook</label>
+                                        <input className='form-control' name="country" placeholder="https//"/>
+                                    </div>
+                                    <div className="col-lg-6">
+                                        <div className='d-flex flex-column'>
+                                            <label htmlFor='lastName'>Votre chaîne Youtube</label>
+                                            <input className='form-control' name="country" placeholder="https//"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-lg-6">
+                                        <label htmlFor='lastName'>Votre page Instagram</label>
+                                        <input className='form-control' name="instagram" placeholder="https//"/>
+                                    </div>
+                                    <div className="col-lg-6">
+                                        <div className='d-flex flex-column'>
+                                            <label htmlFor='lastName'>Votre compte Twitter</label>
+                                            <input className='form-control' name="twitter" placeholder="https//"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-lg-6">
+                                        <label htmlFor='lastName'>Votre page Linkedin</label>
+                                        <input className='form-control' name="linkedin" placeholder="https//"/>
+                                    </div>
+                                    <div className="col-lg-6">
+                                        <div className='d-flex flex-column'>
+                                            <label htmlFor='lastName'>Votre chaîne TikTok</label>
+                                            <input className='form-control' name="tiktok" placeholder="https//"/>
+                                        </div>
+                                    </div>
+                                </div>
                             <br/>
                             <p className="card-text concours-unique-infos back bg-dark text-white" onClick={() => handleSubmit()}>Mettre à jour</p>
                         </div>
