@@ -18,6 +18,15 @@ function ConcoursSearch() {
             })
     }
 
+    function theCritaries() {
+        var x = document.getElementById("input-group");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
@@ -34,7 +43,7 @@ function ConcoursSearch() {
                                 <a className="nav-link active" aria-current="page" onClick={() => { navigate('/') }}>Accueil</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" onClick={() => { navigate('concoursSearch') }}>Concours photo</a>
+                                <a className="nav-link">Concours photo</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Photographes</a>
@@ -90,11 +99,11 @@ function ConcoursSearch() {
                     <select className="select selectFilter" data-mdb-filter="true">
                         <option value="1">Etat : concours actifs</option>
                     </select>
-                    <select className="select selectFilter" data-mdb-filter="true">
+                    <select className="select selectFilter" data-mdb-filter="true" onClick={theCritaries}>
                         <option value="1">Plus de critères</option>
                     </select>
                 </div>
-                <div className="input-group">
+                <div id="input-group" className="input-group moreCritaries">
                     <select className="select selectFilter1" data-mdb-filter="true">
                         <option value="1">France</option>
                     </select>
@@ -113,7 +122,7 @@ function ConcoursSearch() {
                     <select className="select selectFilter" data-mdb-filter="true">
                         <option value="1">Tous</option>
                     </select>
-                    <button type="button" className="btn btn-outline-primary">Rechercher</button>
+                    <button type="button" className="btn btn-outline-primary searchButtonHidden">Rechercher</button>
                 </div>
                 <div id="carouselExampleIndicators" className="carousel slide carousel-photos">
                     <div className="carousel-indicators">
