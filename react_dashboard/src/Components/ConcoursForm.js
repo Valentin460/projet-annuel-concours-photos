@@ -1,6 +1,12 @@
 import { React, useState, useEffect } from 'react';
+import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function ConcoursForm() {
+
+    const [contestsList, setContestsList] = useState([])
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const [concours, setConcours] = useState({
         status:'',
@@ -24,6 +30,25 @@ function ConcoursForm() {
         critere_age_min:'',
         critere_age_max:'',
     })
+
+    useEffect(() => {
+        if (location.state.id !== 'undefined') {
+            axios.get('http://localhost:8000/api/contests/' + location.state.id)
+        }
+    }, []);
+
+    function handleSubmit() {
+        if (location.state.id !== 'undefined') {
+            axios.put('http://localhost:8080/api/contests/' + location.state.id)
+                .then(response => {
+                    navigate('/concoursList')
+                    console.log(response)
+                })
+        } else {
+            alert('non non non')
+        }
+    }
+
     return (
         <div className="container">
             <h2>Gestion d'un concours</h2>
@@ -41,12 +66,12 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="theme">Thème</label>
-                    <select name="theme" className="form-control" value={concours.theme} onChange={(event) => setConcours(event.target.value)}></select>
+                    {/* <select name="theme" className="form-control" value={concours.theme} onChange={(event) => setConcours(event.target.value)}></select> */}
                     <option></option>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="categoryParticipant">Catégorie des participants</label>
-                    <select name="categoryParticipant" className="form-control" value={concours.categoryParticipant} onChange={(event) => setConcours(event.target.value)}></select>
+                    {/* <select name="categoryParticipant" className="form-control" value={concours.categoryParticipant} onChange={(event) => setConcours(event.target.value)}></select> */}
                     <option></option>
                 </div>
                 <div className='form-group col-md-6'>
@@ -103,10 +128,10 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="critere_age_min critere_age_max">Critères</label>
-                    <select name="critere_age_min critere_age_max" className="form-control" value={concours.critere_age_min.critere_age_max} onChange={(event) => setConcours(event.target.value)}></select>
+                    {/* <select name="critere_age_min critere_age_max" className="form-control" value={concours.critere_age_min.critere_age_max} onChange={(event) => setConcours(event.target.value)}></select> */}
                     <option></option>
                 </div>
-                <button type='button' className='btn btn-primary col-4 col-lg-2'>Enregistrer</button>
+                <button type='button' className='btn btn-primary col-4 col-lg-2' onClick={() => handleSubmit()}>Enregistrer</button>
             </form>
         </div>
     );
