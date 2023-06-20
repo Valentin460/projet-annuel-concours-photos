@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'
+import moment from "moment";
 
 
 function UserForm() {
@@ -138,7 +139,7 @@ function UserForm() {
                 </div>
                 <div className='d-flex flex-column offset-lg-4 col-lg-2'>
                     <label htmlFor='dateOfBirth'>Date de naissance</label>
-                    <input name='dateOfBirth' type={'date'} value={user.dateBorn} className='form-control' onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
+                    <input name='dateOfBirth' type={'date'} value={moment(user.dateBorn).format('YYYY-MM-DD')} className='form-control' onChange={(event) => setUser({ ...user, dateBorn: event.target.value })} />
                 </div>
                 <div className='d-flex flex-column col-lg-2'>
                     <label htmlFor='address'>Adresse</label>
