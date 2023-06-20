@@ -108,6 +108,10 @@
     color: #FFFFFF;
 }
 
+.searchButtonHidden {
+    visibility: hidden;
+}
+
 @media (max-width: 1072px) {
     .carrousel-ads {
         width: 98%;
