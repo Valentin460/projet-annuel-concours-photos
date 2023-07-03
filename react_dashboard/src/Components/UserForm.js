@@ -26,7 +26,6 @@ function UserForm() {
     const [newEmail, setNewEmail] = useState('')
     const [currentEmail, setCurrentEmail] = useState('')
     const [emailChange, setEmailChange] = useState(false)
-    const [currentUser, setCurrentUser] = useState(null)
     const location = useLocation();
     const navigate = useNavigate();
 
