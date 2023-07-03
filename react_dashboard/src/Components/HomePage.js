@@ -88,10 +88,10 @@ function HomePage() {
                                 <a className="nav-link" href="#">Photographes</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" href="#">Organisateurs</a>
+                                <a className="nav-link" onClick={() => { navigate('organizations') }}>Organisateurs</a>
                             </li>
                             <li className="nav-item nav-link-bold">
-                                <a className="nav-link" href="#">Créez votre concours</a>
+                                <a className="nav-link" onClick={() => { navigate('CreateContest')}} >Créez votre concours</a>
                             </li>
                             <li className="nav-item nav-link-bold">
                                 <a className="nav-link" href="#">Blog</a>
