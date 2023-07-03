@@ -10,25 +10,25 @@ function ConcoursForm() {
 
     const [concours, setConcours] = useState({
         status:'',
-        name_concours: '',
-        theme:'',
+        name_contests: '',
+        themes:'',
         categoryParticipant:'',
         visual_concours:'',
         description:'',
-        reglement:'',
-        dotations:'',
+        rules:'',
+        prices:'',
         date_creation:'',
         date_publication:'',
-        date_start_soumission:'',
-        date_end_soumission:'',
+        date_start_submissions:'',
+        date_end_submissions:'',
         date_start_votes:'',
         date_end_votes:'',
         date_results:'',
-        ponderation_votes_jury:'',
+        jury_votes_weighting:'',
         nb_max_votes:'',
         nbPrice:'',
-        critere_age_min:'',
-        critere_age_max:'',
+        criteria_age_min:'',
+        criteria_age_max:'',
     })
 
     useEffect(() => {
@@ -62,7 +62,7 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="name_concours">Nom</label>
-                    <input className="form-control" type={"text"} name="name_concours" value={concours.name_concours} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"text"} name="name_concours" value={concours.name_contests} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="theme">Thème</label>
@@ -84,11 +84,11 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="reglement">Logo</label>
-                    <input className="form-control" type={"file"} name="reglement" value={concours.reglement} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"file"} name="reglement" value={concours.rules} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="dotations">Dotations</label>
-                    <input className="form-control" type={"text"} name="dotations" value={concours.dotations} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"text"} name="dotations" value={concours.prices} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="date_publication">Date publication</label>
@@ -96,11 +96,11 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="date_start_soumission">Date début de soumission</label>
-                    <input className="form-control" type={"date"} name="date_start_soumission" value={concours.date_start_soumission} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"date"} name="date_start_soumission" value={concours.date_start_submissions} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="date_end_soumission">Date fin de soumission</label>
-                    <input className="form-control" type={"date"} name="date_end_soumission" value={concours.date_end_soumission} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"date"} name="date_end_soumission" value={concours.date_end_submissions} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="date_start_votes">Date début des votes</label>
@@ -116,7 +116,7 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="ponderation_votes_jury">Pondération</label>
-                    <input className="form-control" type={"text"} name="ponderation_votes_jury" value={concours.ponderation_votes_jury} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"text"} name="ponderation_votes_jury" value={concours.jury_votes_weighting} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="nb_max_votes">Nombre max de votes</label>
@@ -124,7 +124,7 @@ function ConcoursForm() {
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="nb_prix">Nombre de prix</label>
-                    <input className="form-control" type={"text"} name="nb_prix" value={concours.nb_prix} onChange={(event) => setConcours(event.target.value)}/>
+                    <input className="form-control" type={"text"} name="nb_prix" value={concours.nbPrice} onChange={(event) => setConcours(event.target.value)}/>
                 </div>
                 <div className='form-group col-md-6'>
                     <label htmlFor="critere_age_min critere_age_max">Critères</label>
