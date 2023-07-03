@@ -22,11 +22,11 @@ function MembreList() {
     return (
         <div className='container'>
             <div className='row'>
-                <h1 className='my-3 offset-lg-4 col-lg-4'>Liste des membres</h1>
-                <button type='button' className='btn btn-primary offset-3 col-1 h-25 my-4' onClick={() => { navigate('/membreForm', {state: {id: 'undefined'}}) }}>+</button>
+                <h1 className='my-3 text-center'>Liste des membres</h1>
+                <button type='button' className='btn btn-primary offset-5 col-2 h-25 my-4' onClick={() => { navigate('/membreForm', {state: {id: 'undefined'}}) }}>+</button>
                 {membreList.map(membre => {
                     return (
-                        <div key={membre.id} className='offset-lg-4 col-lg-7 d-flex mb-3'>
+                        <div key={membre.id} className='offset-sm-4 col-sm-6 d-flex mb-3'>
                             <h2 className='me-5'>{membre.id}</h2>
                             <h3>{membre.pseudo}</h3>
                             <button type='button' className='btn btn-primary m-auto' onClick={() => { navigate('/membreForm', {state: {id: membre.id}}) }}>Modifier</button>
