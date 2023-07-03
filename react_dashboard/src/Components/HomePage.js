@@ -300,13 +300,13 @@ function HomePage() {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="d-block w-100" alt="..."/>
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.Y8ZoVWpojrALV66-rjFgMwHaFj&pid=Api" className="d-block w-100" alt="..."/>
                         </div>
                         <div className="carousel-item">
-                            <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="d-block w-100" alt="..."/>
+                            <img src="https://tse2.mm.bing.net/th?id=OIP.XH3SPjVrQ7Waya1hWokdcwHaFj&pid=Api" className="d-block w-100" alt="..."/>
                         </div>
                         <div className="carousel-item">
-                            <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="d-block w-100" alt="..."/>
+                            <img src="https://tse2.mm.bing.net/th?id=OIP.mXE-DBtoXGJFirZbMgLQhAHaFj&pid=Api" className="d-block w-100" alt="..."/>
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -320,7 +320,7 @@ function HomePage() {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
-                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" alt="..." className="pub-header"/>
+                <img src="https://tse2.mm.bing.net/th?id=OIP.2-hxw-avKipksDofNgnPEQHaFj&pid=Api" alt="..." className="pub-header"/>
                 <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" alt="..." className="pub-header"/>
                 <div>
                     <h3 className="last-photos">Derniers concours photo publiés</h3>
@@ -330,12 +330,12 @@ function HomePage() {
                         return (
                             <div className="col" key={concour.id}>
                                 <a onClick={() => { navigate('/InfoContest', {state: {id: concour.id}}) }}><div className="card">
-                                    <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."/>
+                                    <img src="https://tse1.mm.bing.net/th?id=OIP.Y8ZoVWpojrALV66-rjFgMwHaFj&pid=Api" className="card-img-top" alt="..."/>
                                     <div className="card-body">
-                                        <h5 className="card-title">{concour.id} {concour.name_contests}</h5>
-                                        <p className="card-text concours-infos">{concour.name_organisation}</p>
-                                        <p className="card-text concours-infos">Nature</p>
-                                        <p className="card-text concours-infos">{concour.state}</p>
+                                        <h5 className="card-title">{concour.name_contests}</h5>
+                                        <p className="card-text concours-infos">Saint-Vincent</p>
+                                        <p className="card-text concours-infos">Culture</p>
+                                        <p className="card-text concours-infos">Terminé</p>
                                         <br/><br/>
                                         <p className="card-text concours-infos">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

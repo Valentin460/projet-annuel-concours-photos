@@ -126,16 +126,16 @@ function InfoContest() {
                 <div className="row">
                     <div className="col-8">
                         <h1 className="title-photos">{infoContest.name_contests}</h1>
-                        <p className="card-text concours-unique-infos">Thème :</p>
-                        <p className="card-text concours-unique-infos">Pays :</p>
-                        <p className="card-text concours-unique-infos">Région :</p>
-                        <p className="card-text concours-unique-infos">Catégorie :</p>
-                        <p className="card-text concours-unique-infos">Âge :</p>
-                        <p className="card-text concours-unique-infos">Dotation :</p>
+                        <p className="card-text concours-unique-infos">Thème : Monuments</p>
+                        <p className="card-text concours-unique-infos">Pays : France</p>
+                        <p className="card-text concours-unique-infos">Région : Toutes</p>
+                        <p className="card-text concours-unique-infos">Catégorie : Ouvert à tous</p>
+                        <p className="card-text concours-unique-infos">Âge : 18 et plus</p>
+                        <p className="card-text concours-unique-infos">Dotation : Cadeaux</p>
                     </div>
                     <div className="col-4 bloc-status-contest">
-                        <p>Organisateur : <b className="name-organizations">URCAUE des Hauts-de-France</b></p>
-                        <p className="card-text concours-unique-infos status-concours">PHASE DE VOTE</p>
+                        <p>Organisateur : <b className="name-organizations">Association Saint-Vincent</b></p>
+                        <p className="card-text concours-unique-infos status-concours">TERMINE</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" className="bi bi-clock" viewBox="0 0 16 16">
                         <path
@@ -176,8 +176,8 @@ function InfoContest() {
                         </p>
                     </div>
                 </div>
-                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" alt="..." className="carrousel-ads" />
-                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" alt="..." className="pub-header" />
+                <img src="https://tse1.mm.bing.net/th?id=OIP.Y8ZoVWpojrALV66-rjFgMwHaFj&pid=Api" alt="..." className="carrousel-ads" />
+                <img src="https://tse2.mm.bing.net/th?id=OIP.AiD-YeUPMS2fckPZwLRsggHaFj&pid=Api" alt="..." className="pub-header" />
                 <div id="carouselExampleIndicators" className="carousel slide picture-concours">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -531,100 +531,55 @@ function InfoContest() {
                 </div>
                 <div className="tab-pane fade infos-concours-section" id="members" role="tabpanel" aria-labelledby="members-tab">
                     <h3>Membres du Jury</h3>
-                    <p>{infoContest.membersContest} membres du Jury</p>
-                    <p className="name-jury">Bernadette VANNOBEL, présidente de URCAUE présidente du CAUE de l'Aisne</p>
+                    <p>{infoContest.membersContest}</p>
+                    <p className="name-jury">Bernadette VANNOBEL, enseignant de Saint-Vincent</p>
                 </div>
                 <div className="tab-pane fade infos-concours-section" id="pictures" role="tabpanel" aria-labelledby="pictures-tab">
                     <h3>Les photos</h3>
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as
-                                        a natural lead-in to additional content. This content is a little bit
-                                        longer.</p>
-                                </div>
+                                <img src="https://tse1.mm.bing.net/th?id=OIP.EvmEY6jBYBvzJmi7mcHLxQHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a short card.</p>
-                                </div>
+                                <img src="https://tse3.mm.bing.net/th?id=OIP.52DZGGmOJYWZoW7uBGjaaQHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as
-                                        a natural lead-in to additional content.</p>
-                                </div>
+                                <img src="https://tse1.mm.bing.net/th?id=OIP.WHNRkFyQ6yz1j3jKHdhwmQHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as
-                                        a natural lead-in to additional content. This content is a little bit
-                                        longer.</p>
-                                </div>
+                                <img src="https://tse2.mm.bing.net/th?id=OIP.EH-SMIMda_u4JzjQsoiieAHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a short card.</p>
-                                </div>
+                                <img src="https://tse1.mm.bing.net/th?id=OIP.YDokcVndI04C4PTsEvEhiwHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as
-                                        a natural lead-in to additional content.</p>
-                                </div>
+                                <img src="https://tse2.mm.bing.net/th?id=OIP.FXBXrYI-OWs9DddM-8W14gHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as
-                                        a natural lead-in to additional content. This content is a little bit
-                                        longer.</p>
-                                </div>
+                                <img src="https://tse4.mm.bing.net/th?id=OIP.RiHWsd0B8mzvHbA-GjqYnAHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a short card.</p>
-                                </div>
+                                <img src="https://tse2.mm.bing.net/th?id=OIP.IxDfMiy-LtcMVV58wmtPSAHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card h-100">
-                                <img src="https://www.wallpapers13.com/wp-content/uploads/2016/01/Cool-and-Beautiful-Nature-desktop-wallpaper-image-2560X1600-1600x1200.jpg" className="card-img-top" alt="..."></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as
-                                        a natural lead-in to additional content.</p>
-                                </div>
+                                <img src="https://tse2.mm.bing.net/th?id=OIP.AiD-YeUPMS2fckPZwLRsggHaFj&pid=Api" className="card-img-top" alt="..."></img>
                             </div>
                         </div>
                         <div className="block-pagination">
